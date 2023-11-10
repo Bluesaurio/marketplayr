@@ -1,15 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
-
 const User = require("../models/User.model");
 
-// GET "/auth/register" => Renderizar el formulario de registro
+//! GET "/auth/register" => Renderizar el formulario de registro
 router.get("/register", (req, res, next) => {
   res.render("auth/register.hbs");
 });
 
-// POST "/auth/signup" => Recibir los datos del usuario y crearlos en la DB
+//! POST "/auth/register" => Recibir los datos del usuario y crearlos en la DB
 router.post("/register", async (req, res, next) => {
   console.log(req.body);
 
@@ -93,6 +92,70 @@ router.post("/register", async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+});
+
+//! GET "/auth/login" => Renderizar formulario de inicio de sesión
+
+router.get("/login", (req, res, next) => {
+  res.render("auth/login.hbs");
+});
+
+//! POST "/auth/login" => Recibir datos e iniciar una sesión y redirigir a home
+
+router.post("/login", async (req, res, next) => {
+  console.log(req.body);
+  const { email, password } = req.body;
+
+  // validar que los campos estén llenos
+  if (email === "" || password === "") {
+    res.status(400).render("auth/login.hbs", {
+      errorMessage: "Faltan campos por rellenar",
+    });
+    return;
+  }
+
+  // validar que el correo/usuario exista
+  try {
+    const foundUser = await User.findOne({ email });
+    if (foundUser === null) {
+      res.status(400).render("auth/login.hbs", {
+        errorMessage: "Usuario no registrado",
+      });
+      return;
+    }
+    // validar contraseña válida
+
+    console.log(foundUser);
+    const isPasswordValid = await bcrypt.compare(password, foundUser.password);
+    console.log("la contraseña es valida?", isPasswordValid);
+    if (isPasswordValid === false) {
+      res.status(400).render("auth/login.hbs", {
+        errorMessage: "Contraseña incorrecta.",
+      });
+      return;
+    }
+    // cuando esté todo ok, crear sesión activa
+    const sessionInfo = {
+      _id: foundUser._id,
+      email: foundUser.email,
+      role: foundUser.role,
+    };
+    req.session.user = sessionInfo;
+    req.session.save(() => {
+      // redirigir a home
+      res.redirect("/");
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// GET "auth/logout" cerrar sesión activa y redireccionar a "/"
+
+router.get("/logout", (req, res, next) => {
+  req.session.destroy(() => {
+    res.redirect("/");
+  });
 });
 
 module.exports = router;

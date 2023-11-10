@@ -16,6 +16,14 @@ const favicon = require("serve-favicon");
 // ℹ️ global package used to `normalize` paths amongst different operating systems
 // https://www.npmjs.com/package/path
 const path = require("path");
+// paquetes para sesiones activas
+
+const session = require("express-session");
+
+const MongoStore = require("connect-mongo");
+
+const MONGO_URI =
+  process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/marketplayr";
 
 // Middleware configuration
 module.exports = (app) => {
@@ -35,5 +43,22 @@ module.exports = (app) => {
   app.use(express.static(path.join(__dirname, "..", "public")));
 
   // Handles access to the favicon
-  app.use(favicon(path.join(__dirname, "..", "public", "images", "favicon.ico")));
+  app.use(
+    favicon(path.join(__dirname, "..", "public", "images", "favicon.ico"))
+  );
+
+  app.use(
+    session({
+      secret: process.env.SESSION_SECRET,
+      resave: false,
+      saveUninitialized: false,
+      cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 3,
+      },
+      store: MongoStore.create({
+        mongoUrl: MONGO_URI,
+        ttl: 60 * 60 * 24 * 3,
+      }),
+    })
+  );
 };
