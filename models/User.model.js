@@ -27,7 +27,6 @@ const userSchema = new Schema(
     profilePic: String, // TODO Intentar poner default image
   },
   {
-    // this second object adds extra properties: `createdAt` and `updatedAt`
     timestamps: true,
   }
 );
