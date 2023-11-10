@@ -88,7 +88,7 @@ router.post("/register", async (req, res, next) => {
     });
 
     //* Redirección
-    res.redirect("/");
+    res.redirect("/auth/login");
   } catch (error) {
     next(error);
   }
@@ -143,7 +143,7 @@ router.post("/login", async (req, res, next) => {
     req.session.user = sessionInfo;
     req.session.save(() => {
       // redirigir a home
-      res.redirect("/");
+      res.redirect("/profile");
     });
   } catch (error) {
     next(error);
