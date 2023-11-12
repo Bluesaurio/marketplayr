@@ -12,4 +12,7 @@ router.use("/auth", authRouter);
 const profileRouter = require("./profile.routes.js");
 router.use("/profile", profileRouter);
 
+const productRouter = require("./product.routes.js");
+router.use("/product", productRouter);
+
 module.exports = router;

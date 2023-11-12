@@ -1,1 +1,0 @@
-// detalles del producto escogido
