@@ -30,7 +30,6 @@ router.get("/add-product", (req, res, next) => {
 
 router.post("/add-product", async (req, res, next) => {
   console.log(req.body);
-  const { productId } = req.params;
   const {
     title,
     platform,
@@ -44,7 +43,7 @@ router.post("/add-product", async (req, res, next) => {
   } = req.body;
 
   try {
-    Product.create({
+    const newProduct = await Product.create({
       title,
       platform,
       edition,
@@ -55,7 +54,7 @@ router.post("/add-product", async (req, res, next) => {
       genre,
       stock,
     });
-    res.redirect(`/product/${productId}`);
+    res.redirect(`/product/${newProduct._id}`);
   } catch (error) {
     next(error);
   }

@@ -143,7 +143,7 @@ router.post("/login", async (req, res, next) => {
     req.session.user = sessionInfo;
     req.session.save(() => {
       // redirigir a home
-      res.redirect("/profile");
+      res.redirect("/");
     });
   } catch (error) {
     next(error);
