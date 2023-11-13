@@ -68,7 +68,7 @@ router.post("/:productId/editProduct", async (req, res, next) => {
     stock,
   } = req.body;
   try {
-    const respose = await Product.findByIdAndUpdate(req.body);
+    const response = await Product.findByIdAndUpdate(req.body);
     res.render("profile/product-edit.hbs", { editedProduct: response });
   } catch (error) {
     next(error);

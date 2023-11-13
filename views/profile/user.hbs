@@ -18,16 +18,27 @@
   <button>Subir imagen</button>
   
   </form>
-  {{#if this.isUser}}
-  <a href="/profile/add-product">
-    <button>Crear producto</button>
-  </a>
-  <br>
-  {{#each this.allVideogames}}
-  <a href="/profile/{{this._id}}"><li><img class="profileGames" src="{{this.productPic}}" alt="game-img-">{{this.title}}</li></a>
-  
 
+  {{#if this.isUser}}
+
+  <a href="/profile/add-product">
+
+    <button>Crear producto</button>
+
+  </a>
+
+  <br>
+
+  {{#each this.allVideogames}}
+
+    <a href="/profile/{{this._id}}">
+      
+      <img class="profileGames" src="{{this.productPic}}" alt="game-img">{{this.title}}
+      
+    </a>
+  
   {{/each}}
+  
   {{/if}}
   {{#if this.isAdmin}}
   <br>
