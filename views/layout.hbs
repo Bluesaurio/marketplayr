@@ -14,7 +14,7 @@
 
       <ul class="nav nav-pills">
          <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/">Videojuegos</a>
          </li>
 
          {{#if isSessionActive}}
@@ -37,21 +37,6 @@
 
          {{/if}}
       </ul>
-
-      {{!-- <nav>
-
-         <a href="/">Home</a>
-         {{#if isSessionActive}}
-         
-         <a href="/auth/logout">Cerrar Sesión</a>
-         <a href="/profile">Perfil</a>
-         <span>Bienvenido, {{this.foundUser.username}}</span>
-         {{else}}
-         <a href="/auth/register">Registrarse</a>
-         <a href="/auth/login">Iniciar Sesión</a>
-         {{/if}}
-
-      </nav> --}}
 
       {{{body}}}
 
