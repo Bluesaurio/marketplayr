@@ -55,7 +55,7 @@ router.post("/:productId/editProduct", async (req, res, next) => {
       genre,
       stock,
     });
-    res.render("profile/product-edit.hbs", { editedProduct: response });
+    res.redirect(`/profile/${req.params.productId}`);
   } catch (error) {
     next(error);
   }
