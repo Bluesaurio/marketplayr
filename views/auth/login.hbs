@@ -1,28 +1,26 @@
-<div>
+<div class="login-card">
 
     <h3>Iniciar sesión</h3>
 
-    <form action="/auth/login" method="post">
-    
-    <label for="email">Usuario</label>
-    <input type="email" name="email" placeholder=" E-mail">
+     <form action="/auth/login" method="post">
+        <div class="mb-3">
+            <label for="email" class="form-label">Usuario</label>
+            <input type="email" class="form-control" id="emailLogin" name="email" placeholder="Usa tu e-mail"> 
+            <div id="emailHelp" class="form-text">No compartiremos tu e-mail con nadie</div>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="passwordLogin" name="password">
+        </div>
+        <div class="mb-3">
+            ¿Estás <a href="/auth/register">registrado?</a>
+        </div>
+        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
 
-    <br>
-    
-    <label for="password">Contraseña</label>
-    <input type="password" name="password">
-
-    <br>
-    
-    ¿Estás <a href="/auth/register">registrado?</a> <button>Iniciar sesión</button>
-    
-    {{#if this.errorMessage}}
-   <p class="error">{{this.errorMessage}}</p> 
-    {{/if}}
+        {{#if this.errorMessage}}
+         <p class="error">{{this.errorMessage}}</p> 
+        {{/if}}
     </form>
-
-
-
 
 
 </div>

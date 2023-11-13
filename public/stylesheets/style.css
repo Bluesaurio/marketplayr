@@ -15,3 +15,20 @@ h1 {
   color: red;
   font-weight: bold;
 }
+
+.login-card {
+  max-width: 300px;
+  margin: auto;
+  margin-top: 50px;
+  border: 1px solid white;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.login-card button {
+  text-align: left;
+}
+
+.login-card h3 {
+  text-align: center;
+}
