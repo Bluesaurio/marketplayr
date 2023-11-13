@@ -1,14 +1,18 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User.model");
-const { isLoggedIn, isAdmin } = require("../middlewares/auth.middlewares");
+const {
+  isLoggedIn,
+  isAdmin,
+  updateLocals,
+} = require("../middlewares/auth.middlewares");
 const Product = require("../models/Product.model");
 
 const uploader = require("../middlewares/cloudinary.middleware");
 
 // GET "/profile" => Renderizar vista perfil usuario
 
-router.get("/", isLoggedIn, async (req, res, next) => {
+router.get("/", isLoggedIn, updateLocals, async (req, res, next) => {
   console.log("Información del usuario", req.session.user); // Información del user que hace la llamada
   console.log("ID del usuario:", req.session.user._id); // ID del user que hace la llamada
 

@@ -2,7 +2,6 @@
 
   <h3>Perfil</h3>
 
-  {{#if this.userProfile.role}}
 
   <p>Usuario: {{userProfile.username}}</p>
   <p>Email: {{userProfile.email}}</p>
@@ -23,6 +22,10 @@
   <a href="/profile/add-product">
     <button>Crear producto</button>
   </a>
+  {{#if this.isAdmin}}
+  <br>
+  <br>
+  <a href="/admin"><button>Abrir panel de Administrador</button></a>
 
   {{/if}}
 
