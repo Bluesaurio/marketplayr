@@ -38,9 +38,55 @@ router.get("/", isLoggedIn, updateLocals, async (req, res, next) => {
     next(error);
   }
 });
+// GET "/profile/:productId" => renderizar los detalles de los productos del usuario
+router.get("/:productId", updateLocals, async (req, res, next) => {
+  const productId = await Product.findById(req.params.productId);
+  res.render("profile/product-details.hbs", { productId });
+});
+// GET "/profile/:productId/edit" => Renderizar un formulario para editar la información del producto
+router.get("/:productId/edit", updateLocals, async (req, res, next) => {
+  try {
+    const productEdit = await Product.findById(req.params.productId);
+    res.render("profile/product-edit.hbs", {
+      productEdit,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+// POST "/profile/:productId/editProduct" para editar la info que se introduce en el formulario
+router.post("/:productId/editProduct", async (req, res, next) => {
+  const {
+    title,
+    platform,
+    edition,
+    releaseYear,
+    developer,
+    publisher,
+    price,
+    genre,
+    stock,
+  } = req.body;
+  try {
+    const respose = await Product.findByIdAndUpdate(req.body);
+    res.render("profile/product-edit.hbs", { editedProduct: response });
+  } catch (error) {
+    next(error);
+  }
+});
+// POST "/profile/:productId/delete" para borrar el producto seleccionado
+router.post("/:productId/delete", async (req, res, next) => {
+  console.log("Borrando producto", req.params.productId);
 
+  try {
+    await Product.findByIdAndDelete(req.params.productId);
+    res.redirect("/profile");
+  } catch (error) {
+    next(error);
+  }
+});
 // GET "/profile/add-product" => Renderizar un formulario para crear productos
-router.get("/add-product", (req, res, next) => {
+router.get("/add-product", updateLocals, (req, res, next) => {
   res.render("profile/add-product.hbs");
 });
 
