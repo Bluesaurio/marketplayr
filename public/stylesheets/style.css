@@ -1,6 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gabarito&family=Nunito+Sans:opsz,wght@6..12,500&family=Open+Sans:ital,wght@0,500;1,400&family=Pacifico&family=Roboto:wght@100;400&display=swap");
+
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans";
+  font-size: 14px;
 }
 
 a {
@@ -17,18 +20,79 @@ h1 {
 }
 
 .login-card {
-  max-width: 300px;
+  max-width: 350px;
   margin: auto;
   margin-top: 50px;
-  border: 1px solid white;
+  border: 1px solid gray;
   border-radius: 8px;
   padding: 20px;
 }
 
-.login-card button {
-  text-align: left;
+.login-card h3 {
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-.login-card h3 {
+.login-card form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-card .mb-3,
+.login-card button {
+  display: inline-block;
+  margin: 10px;
+}
+
+.register-card {
+  max-width: 350px;
+  margin: auto;
+  margin-top: 50px;
+  border: 1px solid gray;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.register-card h3 {
+  margin-bottom: 20px;
   text-align: center;
+}
+
+.register-card form {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-card .mb-3,
+.register-card button {
+  display: inline-block;
+  margin: 10px;
+}
+
+.nav {
+  background-color: lightblue;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 10px;
+}
+
+.nav-link {
+  color: black;
+}
+
+.home {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.home p {
+  width: calc(20% - 10px);
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.home img {
+  max-width: 100%;
 }

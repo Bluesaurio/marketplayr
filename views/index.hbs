@@ -1,16 +1,22 @@
-<h1>Marketplayr</h1>
+<div class="home">
+
 
 {{#each this.allVideogames}}
 
-<p>
-  <a href="/product/{{this._id}}"><img src="{{this.productPic}}" alt="imagen-producto" width="300px">
-  <p>
-    {{this.title}}
-  </p>
-  </a>
-</p>
+  <div class="product">
 
+    <p>
+      <a href="/product/{{this._id}}"><img src="{{this.productPic}}" alt="imagen-producto" width="300px">
+      <p>
+        {{this.title}}
+      </p>
+      </a>
+    </p>
+
+  </div>
 
 {{/each}}
+
+</div>
 
  
