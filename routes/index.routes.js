@@ -9,9 +9,7 @@ const Product = require("../models/Product.model.js");
 
 router.get("/", async (req, res, next) => {
   try {
-    const allVideogames = await Product.find()
-      .select({ title: 1 })
-      .populate("seller");
+    const allVideogames = await Product.find().select({ title: 1 });
     console.log("Qué es esto:", allVideogames);
     res.render("index", {
       allVideogames,
