@@ -9,10 +9,10 @@ const {
 
 // GET /admin para renderizar el perfil de admin
 
-router.get("/", isAdmin, updateLocals, async (req, res, next) => {
+router.get("/", isAdmin, async (req, res, next) => {
   try {
     const allUsers = await User.find().select({ username: 1 });
-    console.log("lista de usuarios: ", allUsers);
+
     res.render("admin/admin.hbs", { allUsers });
   } catch (error) {
     next(error);

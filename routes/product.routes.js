@@ -10,7 +10,7 @@ router.get("/:productId", updateLocals, async (req, res, next) => {
     const oneVideogame = await Product.findById(req.params.productId).populate(
       "seller"
     );
-    console.log(oneVideogame);
+    // console.log(oneVideogame);
     res.render("product/product-details.hbs", {
       oneVideogame,
     });

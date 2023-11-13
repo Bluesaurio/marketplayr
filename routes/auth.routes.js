@@ -10,13 +10,10 @@ router.get("/register", (req, res, next) => {
 
 //! POST "/auth/register" => Recibir los datos del usuario y crearlos en la DB
 router.post("/register", async (req, res, next) => {
-  console.log(req.body);
-
   const { username, email, password } = req.body;
 
   //* Los campos deben estar llenos
   if (!username || !email || !password) {
-    console.log("Faltan campos por rellenar");
     res.status(400).render("auth/register.hbs", {
       errorMessage: "Faltan campos por rellenar",
     });
@@ -26,7 +23,6 @@ router.post("/register", async (req, res, next) => {
 
   //* El username tiene que tener mínimo X chars
   if (username.length < 6) {
-    console.log("Username tiene que tener más de 6 carácteres");
     res.status(400).render("auth/register.hbs", {
       errorMessage: "El usuario tiene que tener más de 6 carácteres",
     });
@@ -103,7 +99,7 @@ router.get("/login", (req, res, next) => {
 //! POST "/auth/login" => Recibir datos e iniciar una sesión y redirigir a home
 
 router.post("/login", async (req, res, next) => {
-  console.log(req.body);
+  // console.log(req.body);
   const { email, password } = req.body;
 
   // validar que los campos estén llenos
@@ -125,9 +121,9 @@ router.post("/login", async (req, res, next) => {
     }
     // validar contraseña válida
 
-    console.log(foundUser);
+    // console.log(foundUser);
     const isPasswordValid = await bcrypt.compare(password, foundUser.password);
-    console.log("la contraseña es valida?", isPasswordValid);
+
     if (isPasswordValid === false) {
       res.status(400).render("auth/login.hbs", {
         errorMessage: "Contraseña incorrecta.",
