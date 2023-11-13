@@ -35,7 +35,7 @@ router.post("/:productId/delete", async (req, res, next) => {
 
   try {
     await Product.findByIdAndDelete(req.params.productId);
-    res.redirect("/profile");
+    res.redirect("/");
   } catch (error) {
     next(error);
   }
