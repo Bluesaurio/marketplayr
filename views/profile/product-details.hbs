@@ -1,21 +1,30 @@
-<div>
+<div class="container-details">
+
+  <div class="videogame-details">
 
     <h3>Detalles del Producto</h3>
 
-  <p>Título: {{this.productId.title}}</p>
-  <p>Plataforma: {{this.productId.platform}}</p>
-  <p>Edición: {{this.productId.edition}}</p>
-  <p>Año: {{this.productId.releaseYear}}</p>
-  <p>Desarrollador: {{this.productId.developer}}</p>
-  <p>Distribuidor: {{this.productId.publisher}}</p>
-  <p>Precio: {{this.productId.price}}€</p>
-  <p>Género: {{this.productId.genre}}</p>
-  <p>Stock: {{this.productId.stock}}</p>
-  <p>Vendedor: {{this.productId.seller.username}}</p>
-  <img src="{{this.productId.productPic}}" alt="imagen-producto" width="300px">
+      <p>Título: {{this.productId.title}}</p>
+      <p>Plataforma: {{this.productId.platform}}</p>
+      <p>Edición: {{this.productId.edition}}</p>
+      <p>Año: {{this.productId.releaseYear}}</p>
+      <p>Desarrollador: {{this.productId.developer}}</p>
+      <p>Distribuidor: {{this.productId.publisher}}</p>
+      <p>Precio: {{this.productId.price}}€</p>
+      <p>Género: {{this.productId.genre}}</p>
+      <p>Stock: {{this.productId.stock}}</p>
+      <p>Vendedor: {{this.productId.seller.username}}</p>
+
+  </div>
+
+  <div class="image-details">
+
+    <img src="{{this.productId.productPic}}" alt="imagen-producto" width="300px">
+
+  </div>
 
     <a href="/profile/{{this.productId._id}}/edit">
-    <button>Editar</button>
-  </a>
+      <button>Editar</button>
+    </a>
 
 </div>
