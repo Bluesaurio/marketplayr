@@ -46,6 +46,10 @@ const productSchema = new mongoose.Schema(
       required: true,
       default: 1,
     },
+    productPic: {
+      type: String,
+      required: true,
+    },
     seller: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",

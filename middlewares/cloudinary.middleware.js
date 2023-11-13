@@ -14,7 +14,7 @@ const storage = new CloudinaryStorage({
   cloudinary,
   params: {
     allowed_formats: ["jpg", "png"],
-    folder: "product-pics-app",
+    folder: "marketplayr-pics-app",
   },
 });
 

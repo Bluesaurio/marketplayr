@@ -7,8 +7,23 @@
   <p>Usuario: {{userProfile.username}}</p>
   <p>Email: {{userProfile.email}}</p>
 
+  <img src="{{this.userProfile.profilePic}}" alt="imagen-perfil" width="300px">
+
+  <br>
+
+  <form action="/profile/upload-picture" method="post" enctype="multipart/form-data">
+
+  <label for="profilePic">Foto de perfil</label>
+  <input type="file" name="profilePic">
+
+  <button>Subir imagen</button>
+  
+  </form>
+
   <a href="/profile/add-product">
     <button>Crear producto</button>
   </a>
+
   {{/if}}
+
 </div>
