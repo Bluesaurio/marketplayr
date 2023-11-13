@@ -19,27 +19,6 @@ router.get("/:productId", updateLocals, async (req, res, next) => {
   }
 });
 
-// GET "/product/:productId" => Renderizar un formulario para editar la informaciónd del producto
-router.get("/:productId/edit", async (req, res, next) => {
-  try {
-    const productEdit = await Product.findById(req.params.productId);
-    res.render("product/product-edit.hbs", {
-      productEdit,
-    });
-  } catch (error) {
-    next(error);
-  }
-});
-
-router.post("/:productId/delete", async (req, res, next) => {
-  console.log("Borrando producto", req.params.productId);
-
-  try {
-    await Product.findByIdAndDelete(req.params.productId);
-    res.redirect("/");
-  } catch (error) {
-    next(error);
-  }
-});
+// aqui ya no hay nada más
 
 module.exports = router;
