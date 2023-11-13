@@ -24,8 +24,8 @@
   </a>
   <br>
   {{#each this.allVideogames}}
-  <li>
-    <img class="profileGames" src="{{this.productPic}}" alt="game-img-">{{this.title}}</li>
+  <a href="/profile/{{this._id}}"><li><img class="profileGames" src="{{this.productPic}}" alt="game-img-">{{this.title}}</li></a>
+  
 
   {{/each}}
   {{/if}}

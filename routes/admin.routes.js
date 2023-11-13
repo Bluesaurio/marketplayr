@@ -9,7 +9,7 @@ const {
 
 // GET /admin para renderizar el perfil de admin
 
-router.get("/", isAdmin, async (req, res, next) => {
+router.get("/", isAdmin, updateLocals, async (req, res, next) => {
   try {
     const allUsers = await User.find().select({ username: 1 });
     console.log("lista de usuarios: ", allUsers);
