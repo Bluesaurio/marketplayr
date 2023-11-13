@@ -53,6 +53,7 @@ router.post("/add-product", async (req, res, next) => {
       price,
       genre,
       stock,
+      seller: req.session.user._id,
     });
     res.redirect(`/product/${newProduct._id}`);
   } catch (error) {
