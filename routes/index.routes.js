@@ -1,11 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Product = require("../models/Product.model.js");
-const {
-  isLoggedIn,
-  updateLocals,
-  isAdmin,
-} = require("../middlewares/auth.middlewares.js");
+const { isLoggedIn, isAdmin } = require("../middlewares/auth.middlewares.js");
 
 const uploader = require("../middlewares/cloudinary.middleware");
 
@@ -14,7 +10,7 @@ const uploader = require("../middlewares/cloudinary.middleware");
 //   res.render("index");
 // });
 
-router.get("/", updateLocals, async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
     const allVideogames = await Product.find()
       .select({
@@ -23,7 +19,7 @@ router.get("/", updateLocals, async (req, res, next) => {
         seller: 1,
       })
       .populate("seller");
-    console.log("Qué es esto:", allVideogames);
+
     res.render("index", {
       allVideogames,
     });
