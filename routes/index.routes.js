@@ -7,6 +7,8 @@ const {
   isAdmin,
 } = require("../middlewares/auth.middlewares.js");
 
+const uploader = require("../middlewares/cloudinary.middleware");
+
 /* GET home page */
 // router.get("/", (req, res, next) => {
 //   res.render("index");
@@ -14,7 +16,10 @@ const {
 
 router.get("/", updateLocals, async (req, res, next) => {
   try {
-    const allVideogames = await Product.find().select({ title: 1 });
+    const allVideogames = await Product.find().select({
+      title: 1,
+      productPic: 1,
+    });
     console.log("Qué es esto:", allVideogames);
     res.render("index", {
       allVideogames,
