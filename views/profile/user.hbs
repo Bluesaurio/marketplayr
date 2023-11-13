@@ -18,15 +18,28 @@
   <button>Subir imagen</button>
   
   </form>
-
+  {{#if this.isUser}}
   <a href="/profile/add-product">
     <button>Crear producto</button>
   </a>
+  <br>
+  {{#each this.allVideogames}}
+  <li>
+    <img class="profileGames" src="{{this.productPic}}" alt="game-img-">{{this.title}}</li>
+
+  {{/each}}
+  {{/if}}
   {{#if this.isAdmin}}
   <br>
   <br>
   <a href="/admin"><button>Abrir panel de Administrador</button></a>
 
   {{/if}}
+
+  {{!-- {{#if this.isOwner}}
+  {{!-- {{#each this.allVideogames}}
+  <li>{{this.title}}</li>
+  {{/each}} --}}
+  {{!-- {{/if}} --}} 
 
 </div>

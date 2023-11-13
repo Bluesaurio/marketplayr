@@ -16,10 +16,13 @@ const uploader = require("../middlewares/cloudinary.middleware");
 
 router.get("/", updateLocals, async (req, res, next) => {
   try {
-    const allVideogames = await Product.find().select({
-      title: 1,
-      productPic: 1,
-    });
+    const allVideogames = await Product.find()
+      .select({
+        title: 1,
+        productPic: 1,
+        seller: 1,
+      })
+      .populate("seller");
     console.log("Qué es esto:", allVideogames);
     res.render("index", {
       allVideogames,

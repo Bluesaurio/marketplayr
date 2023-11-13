@@ -16,6 +16,11 @@ function updateLocals(req, res, next) {
     } else {
       res.locals.isAdmin = false;
     }
+    if (req.session.user.role === "user") {
+      res.locals.isUser = true;
+    } else {
+      res.locals.isUser = false;
+    }
   }
   next();
 }

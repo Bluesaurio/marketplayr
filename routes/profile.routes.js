@@ -19,9 +19,21 @@ router.get("/", isLoggedIn, updateLocals, async (req, res, next) => {
   // Buscar en la BD información del user
   try {
     const userProfile = await User.findById(req.session.user._id);
-    res.render("profile/user.hbs", {
-      userProfile,
-    });
+    const allVideogames = await Product.find({
+      seller: req.session.user._id,
+    }).select({ title: 1, productPic: 1 });
+    if (allVideogames !== null) {
+      console.log(allVideogames);
+
+      res.render("profile/user.hbs", {
+        userProfile,
+        allVideogames,
+      });
+    } else {
+      res.render("profile/user.hbs", {
+        userProfile,
+      });
+    }
   } catch (error) {
     next(error);
   }
