@@ -23,6 +23,7 @@ const capitalize = require("./utils/capitalize");
 const projectName = "marketplayr";
 
 app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
+const { updateLocals } = require("./middlewares/auth.middlewares.js");
 
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");
