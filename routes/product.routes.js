@@ -19,6 +19,6 @@ router.get("/:productId", updateLocals, async (req, res, next) => {
   }
 });
 
-// aqui ya no hay nada más
+// A ver si esto funciona
 
 module.exports = router;
