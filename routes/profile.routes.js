@@ -85,7 +85,7 @@ router.post("/:productId/delete", async (req, res, next) => {
   }
 });
 // GET "/profile/add-product" => Renderizar un formulario para crear productos
-router.get("/add-product", (req, res, next) => {
+router.get("/add-product", isLoggedIn, (req, res, next) => {
   res.render("profile/add-product.hbs");
 });
 
@@ -143,6 +143,10 @@ router.post(
     }
   }
 );
+
+// GET "/profile/my-orders" => renderizar lista de pedidos realizados
+
+router.get("/my-orders", isLoggedIn);
 
 // GET "/profile/:productId" => renderizar los detalles de los productos del usuario
 router.get("/:productId", async (req, res, next) => {
