@@ -1,30 +1,38 @@
 <div class="container-details">
 
-  <div class="videogame-details">
-
-    <h3>Detalles del Producto</h3>
-
-      <p>Título: {{this.productId.title}}</p>
-      <p>Plataforma: {{this.productId.platform}}</p>
-      <p>Edición: {{this.productId.edition}}</p>
-      <p>Año: {{this.productId.releaseYear}}</p>
-      <p>Desarrollador: {{this.productId.developer}}</p>
-      <p>Distribuidor: {{this.productId.publisher}}</p>
-      <p>Precio: {{this.productId.price}}€</p>
-      <p>Género: {{this.productId.genre}}</p>
-      <p>Stock: {{this.productId.stock}}</p>
-      <p>Vendedor: {{this.productId.seller.username}}</p>
-
-  </div>
-
   <div class="image-details">
 
     <img src="{{this.productId.productPic}}" alt="imagen-producto" width="300px">
 
   </div>
 
-    <a href="/profile/{{this.productId._id}}/edit">
-      <button>Editar</button>
-    </a>
+  <div class="text-details">
 
+    <div class="videogame-details">
+
+      <h3>Detalles del Producto</h3>
+      
+        <p><strong>Título:</strong> {{this.productId.title}}</p>
+        <p><strong>Plataforma:</strong> {{this.productId.platform}}</p>
+        <p><strong>Edición:</strong> {{this.productId.edition}}</p>
+        <p><strong>Año:</strong> {{this.productId.releaseYear}}</p>
+        <p><strong>Desarrollador:</strong> {{this.productId.developer}}</p>
+        <p><strong>Distribuidor:</strong> {{this.productId.publisher}}</p>
+        <p><strong>Precio:</strong> {{this.productId.price}}€</p>
+        <p><strong>Género:</strong> {{this.productId.genre}}</p>
+        <p><strong>Stock:</strong> {{this.productId.stock}}</p>
+        <p><strong>Vendedor:</strong> {{this.productId.seller.username}}</p>
+
+    </div>
+
+    <div class="button-details">
+
+      <a href="/profile/{{this.productId._id}}/edit">
+        <button>Editar</button>
+      </a>
+
+    </div>
+
+  </div>
+  
 </div>

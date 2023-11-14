@@ -1,19 +1,30 @@
-<div>
+<div class="container-details">
 
-  <h3>Detalles de producto</h3>
+  <div class="image-details">
 
-  <p>Título: {{this.oneVideogame.title}}</p>
-  <p>Plataforma: {{this.oneVideogame.platform}}</p>
-  <p>Edición: {{this.oneVideogame.edition}}</p>
-  <p>Año: {{this.oneVideogame.releaseYear}}</p>
-  <p>Desarrollador: {{this.oneVideogame.developer}}</p>
-  <p>Distribuidor: {{this.oneVideogame.publisher}}</p>
-  <p>Precio: {{this.oneVideogame.price}}€</p>
-  <p>Género: {{this.oneVideogame.genre}}</p>
-  <p>Stock: {{this.oneVideogame.stock}}</p>
-  <p>Vendedor: {{this.oneVideogame.seller.username}}</p>
-  <img src="{{this.oneVideogame.productPic}}" alt="imagen-producto" width="300px">
+    <img src="{{this.oneVideogame.productPic}}" alt="imagen-producto" width="300px">
 
+  </div>
+
+  <div class="text-details">
+
+    <div class="videogame-details">
+
+      <h3>Detalles del Producto</h3>
+      
+        <p><strong>Título:</strong> {{this.oneVideogame.title}}</p>
+        <p><strong>Plataforma:</strong> {{this.oneVideogame.platform}}</p>
+        <p><strong>Edición:</strong> {{this.oneVideogame.edition}}</p>
+        <p><strong>Año:</strong> {{this.oneVideogame.releaseYear}}</p>
+        <p><strong>Desarrollador:</strong> {{this.oneVideogame.developer}}</p>
+        <p><strong>Distribuidor:</strong> {{this.oneVideogame.publisher}}</p>
+        <p><strong>Precio:</strong> {{this.oneVideogame.price}}€</p>
+        <p><strong>Género:</strong> {{this.oneVideogame.genre}}</p>
+        <p><strong>Stock:</strong> {{this.oneVideogame.stock}}</p>
+        <p><strong>Vendedor:</strong> {{this.oneVideogame.seller.username}}</p>
+
+    </div>
+
+  </div>
   
-
 </div>

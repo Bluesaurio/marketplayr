@@ -101,7 +101,8 @@ h1 {
   margin-bottom: 20px;
   box-sizing: border-box;
   text-align: center;
-  background-color: lightgray;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid;
   border-radius: 10px;
   padding-top: 10px;
 }
@@ -131,15 +132,39 @@ h1 {
 
 .container-details {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.videogame-details {
-  flex: 1;
-  margin-right: 20px;
+  margin-top: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid;
+  border-radius: 10px;
 }
 
 .image-details {
-  flex-shrink: 0;
+  padding: 10px;
+}
+
+.videogame-details h3 {
+  font-weight: bold;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.text-details {
+  flex: 1;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.button-details {
+  margin-top: 10px;
+}
+
+.button-details button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
