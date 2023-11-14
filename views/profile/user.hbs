@@ -8,7 +8,7 @@
 
     <form action="/profile/upload-picture" method="post" enctype="multipart/form-data">
 
-      <label for="profilePic" class="profile-label">Foto de perfil</label>
+      <label for="profilePic" class="profile-label"></label>
       <input type="file" name="profilePic" class="profile-input">
 
       <button class="profile-button">Subir imagen</button>
@@ -58,6 +58,12 @@
       </a>
 
     {{/if}}
+
+      {{#if this.isAdmin}}
+
+          <a href="/admin"><button>Abrir panel de Administrador</button></a>
+
+      {{/if}}
 
   </div>
 

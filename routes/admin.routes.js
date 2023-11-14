@@ -16,8 +16,6 @@ router.get("/", isAdmin, async (req, res, next) => {
   }
 });
 
-module.exports = router;
-
 // GET "/admin/:userId/details" renderizar detalles del usuario seleccionado en la lista
 
 router.get("/:userId/details", isAdmin, async (req, res, next) => {
@@ -41,3 +39,5 @@ router.post("/:productId/delete-product", isAdmin, async (req, res, next) => {
     next(error);
   }
 });
+
+module.exports = router;

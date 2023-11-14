@@ -1,0 +1,61 @@
+<div class="order">
+
+  <h3>Detalles pedido</h3>
+
+  <p>Título: {{videogameOrder.title}}</p>
+  <img src="{{videogameOrder.productPic}}" alt="" width="150px">
+  <p>Precio: {{videogameOrder.price}}€</p>
+
+  <form action="" method="post">
+
+    <div>
+
+    <label for="name">Nombre</label>
+    <input type="text" name="name" id="">
+
+    <br>
+
+    <label for="surname">Apellidos</label>
+    <input type="text" name="surname" id="">
+
+    <br>
+
+    <label for="address">Dirección</label>
+    <input type="text" name="address" id="">
+
+    <br>
+
+    <label for="zipcode">Código postal</label>
+    <input type="number" name="zipcode" id="">
+ 
+    </div>
+
+    <div>
+
+    <label for="card">Nº de tarjeta</label>
+    <input type="number" name="card" id="">
+    {{!-- TODO Añadir comentario de que los datos no son reales --}}
+
+    <br>
+
+    <label for="holder">Titular de la tarjeta</label>
+    <input type="text" name="holder" id="">
+
+    <br>
+
+    <label for="expirationDate">Fecha de expiración</label>
+    <input type="date" name="expirationDate" id="">
+
+    <br>
+
+    <label for="securityNumber">CVV</label>
+    <input type="number" name="securityNumber" id="">
+
+    </div>
+
+    <button>Finalizar compra</button>
+  
+  </form>
+
+
+</div>

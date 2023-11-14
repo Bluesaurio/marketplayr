@@ -39,4 +39,7 @@ router.use("/product", productRouter);
 const adminRouter = require("./admin.routes.js");
 router.use("/admin", adminRouter);
 
+const orderRouter = require("./order.routes.js");
+router.use("/order", orderRouter);
+
 module.exports = router;

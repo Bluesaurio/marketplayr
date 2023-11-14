@@ -10,13 +10,19 @@ const orderSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
+    product: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Product",
+    },
+    address: {
+      type: String,
+    },
     status: {
       type: String,
       enum: ["En proceso", "En envío", "Recibido"],
+      default: "En proceso",
     },
-    num_products: Number, // solo 1 producto
-    order_price: Number,
-    // relacion de producto (una ID)
+    orderPrice: Number,
   },
   {
     timestamps: true,
