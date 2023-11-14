@@ -60,10 +60,11 @@ router.post("/:productId/editProduct", async (req, res, next) => {
     next(error);
   }
 });
+
 // POST "/profile/:productId/delete" para borrar el producto seleccionado
+
 router.post("/:productId/delete", async (req, res, next) => {
   // console.log("Borrando producto", req.params.productId);
-
   try {
     await Product.findByIdAndDelete(req.params.productId);
     res.redirect("/profile");
