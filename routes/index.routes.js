@@ -19,7 +19,6 @@ router.get("/", async (req, res, next) => {
         seller: 1,
       })
       .populate("seller");
-
     res.render("index", {
       allVideogames,
     });

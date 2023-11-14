@@ -14,8 +14,9 @@ const orderSchema = new mongoose.Schema(
       type: String,
       enum: ["En proceso", "En envío", "Recibido"],
     },
-    num_products: Number,
-    total_price: Number,
+    num_products: Number, // solo 1 producto
+    order_price: Number,
+    // relacion de producto (una ID)
   },
   {
     timestamps: true,
