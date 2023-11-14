@@ -158,6 +158,23 @@ router.get("/my-orders", isLoggedIn, async (req, res, next) => {
   }
 });
 
+// GET "/profile/my-orders/:orderId/details" renderizar los detalles del producto seleccionado en la lista de pedidos
+
+router.get(
+  "/my-orders/:orderId/details",
+  isLoggedIn,
+  async (req, res, next) => {
+    try {
+      const orderDetails = await Order.findById(req.params.orderId)
+        .populate("product")
+        .populate("seller");
+      res.render("profile/order-details", { orderDetails });
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
 // GET "/profile/:productId" => renderizar los detalles de los productos del usuario
 router.get("/:productId", async (req, res, next) => {
   const productId = await Product.findById(req.params.productId);
