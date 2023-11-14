@@ -1,50 +1,64 @@
-<div>
+<div class="profile-container">
 
-  <h3>Perfil</h3>
+  <div class="profile-column">
 
+    <h3>Perfil</h3>
 
-  <p>Usuario: {{userProfile.username}}</p>
-  <p>Email: {{userProfile.email}}</p>
+    <img src="{{this.userProfile.profilePic}}" alt="imagen-perfil" width="300px">
 
-  <img src="{{this.userProfile.profilePic}}" alt="imagen-perfil" width="300px">
+    <form action="/profile/upload-picture" method="post" enctype="multipart/form-data">
 
-  <br>
+      <label for="profilePic" class="profile-label">Foto de perfil</label>
+      <input type="file" name="profilePic" class="profile-input">
 
-  <form action="/profile/upload-picture" method="post" enctype="multipart/form-data">
+      <button class="profile-button">Subir imagen</button>
 
-  <label for="profilePic">Foto de perfil</label>
-  <input type="file" name="profilePic">
+    </form>
 
-  <button>Subir imagen</button>
-  
-  </form>
+  </div>
 
-  {{#if this.isUser}}
+  <div class="profile-column">
 
-  <a href="/profile/add-product">
+    <p><strong>Usuario:</strong> {{userProfile.username}}</p>
+    <p><strong>Email:</strong> {{userProfile.email}}</p>
 
-    <button>Crear producto</button>
+      {{#if this.allVideogames}}
 
-  </a>
+        <h4>Productos en Venta</h4>
 
-  <br>
+        <div class="product-list">
 
-  {{#each this.allVideogames}}
+          {{#each this.allVideogames}}
 
-    <a href="/profile/{{this._id}}">
-      
-      <img class="profileGames" src="{{this.productPic}}" alt="game-img">{{this.title}}
-      
-    </a>
-  
-  {{/each}}
-  
-  {{/if}}
-  {{#if this.isAdmin}}
-  <br>
-  <br>
-  <a href="/admin"><button>Abrir panel de Administrador</button></a>
+            <div class="product-item">
 
-  {{/if}}
+              <a href="/profile/{{this._id}}" class="product-link">
+                <img class="profileGames" src="{{this.productPic}}" alt="game-img">
+
+                <div class="product-title-box">
+
+                  <span class="product-title">{{this.title}}</span>
+
+                </div>
+
+              </a>
+
+            </div>
+
+          {{/each}}
+
+        </div>
+
+      {{/if}}
+
+    {{#if this.isUser}}
+
+      <a href="/profile/add-product" class="create-button">
+        <button>Crear producto</button>
+      </a>
+
+    {{/if}}
+
+  </div>
 
 </div>
