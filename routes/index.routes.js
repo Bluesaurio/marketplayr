@@ -42,4 +42,7 @@ router.use("/admin", adminRouter);
 const orderRouter = require("./order.routes.js");
 router.use("/order", orderRouter);
 
+const platformRouter = require("./platform.routes.js");
+router.use("/platform", platformRouter);
+
 module.exports = router;

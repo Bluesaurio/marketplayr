@@ -11,6 +11,13 @@ const productSchema = new mongoose.Schema(
       type: String,
       trim: true,
       required: true,
+      enum: [
+        "Nintendo Switch",
+        "Playstation 5",
+        "Playstation 4",
+        "Xbox Series X",
+        "Xbox One",
+      ],
     },
     edition: {
       type: String,

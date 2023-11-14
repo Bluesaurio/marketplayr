@@ -17,6 +17,22 @@
             <a class="nav-link" href="/">Videojuegos</a>
          </li>
 
+         <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Plataforma</a>
+            <ul class="dropdown-menu">
+               
+               <li><a class="dropdown-item" href="/platform/nintendo-switch">Nintendo Switch</a></li>
+               <li><hr class="dropdown-divider"></li>
+               <li><a class="dropdown-item" href="/platform/playstation-5">Playstation 5</a></li>
+               <li><a class="dropdown-item" href="/platform/playstation-4">Playstation 4</a></li>
+               <li><hr class="dropdown-divider"></li>
+               <li><a class="dropdown-item" href="/platform/xbox-series-x">Xbox Series X</a></li>
+               <li><a class="dropdown-item" href="/platform/xbox-one">Xbox One</a></li>
+               <li><hr class="dropdown-divider"></li>
+            </ul>
+         </li>
+         
+
          {{#if isSessionActive}}
 
          <li class="nav-item">
@@ -36,6 +52,7 @@
          </li>
 
          {{/if}}
+         
       </ul>
 
       {{{body}}}
