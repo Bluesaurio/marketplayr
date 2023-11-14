@@ -175,12 +175,12 @@ h1 {
   max-width: 800px;
   border: 1px solid;
   border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .profile-column {
   margin: 10px;
   padding: 10px;
-  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .profile-column h3 {
@@ -257,6 +257,87 @@ h1 {
   margin-top: 10px;
   font-size: 16px;
   border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.edit-product {
+  max-width: 350px;
+  margin: auto;
+  margin-top: 50px;
+  border: 1px solid gray;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: white;
+}
+
+.edit-product h3 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.edit-product form {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-product label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.update-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.create-product {
+  max-width: 350px;
+  margin: auto;
+  margin-top: 50px;
+  border: 1px solid gray;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: white;
+}
+
+.create-product h3 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.create-product form {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-product label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.create-product button {
+  display: inline-block;
+  margin: 5px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px;
   border-radius: 5px;
   cursor: pointer;
 }

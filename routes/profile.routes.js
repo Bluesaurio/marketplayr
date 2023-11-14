@@ -31,20 +31,12 @@ router.get("/", isLoggedIn, async (req, res, next) => {
 });
 
 // POST "/profile/:productId/editProduct" para editar la info que se introduce en el formulario
-router.post("/:productId/editProduct", async (req, res, next) => {
-  const {
-    title,
-    platform,
-    edition,
-    releaseYear,
-    developer,
-    publisher,
-    price,
-    genre,
-    stock,
-  } = req.body;
-  try {
-    const response = await Product.findByIdAndUpdate(req.params.productId, {
+router.post(
+  "/:productId/editProduct",
+  uploader.single("productPic"),
+  async (req, res, next) => {
+    console.log(req.file);
+    const {
       title,
       platform,
       edition,
@@ -54,12 +46,33 @@ router.post("/:productId/editProduct", async (req, res, next) => {
       price,
       genre,
       stock,
-    });
-    res.redirect(`/profile/${req.params.productId}`);
-  } catch (error) {
-    next(error);
+    } = req.body;
+
+    try {
+      const updateFields = {
+        title,
+        platform,
+        edition,
+        releaseYear,
+        developer,
+        publisher,
+        price,
+        genre,
+        stock,
+      };
+
+      if (req.file !== undefined) {
+        updateFields.productPic = req.file.path;
+      }
+
+      await Product.findByIdAndUpdate(req.params.productId, updateFields);
+      res.redirect(`/profile/${req.params.productId}`);
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
+
 // POST "/profile/:productId/delete" para borrar el producto seleccionado
 router.post("/:productId/delete", async (req, res, next) => {
   // console.log("Borrando producto", req.params.productId);
