@@ -5,6 +5,7 @@ const { isLoggedIn, isAdmin } = require("../middlewares/auth.middlewares");
 const Product = require("../models/Product.model");
 
 const uploader = require("../middlewares/cloudinary.middleware");
+const Order = require("../models/Order.model");
 
 // GET "/profile" => Renderizar vista perfil usuario
 
@@ -146,7 +147,16 @@ router.post(
 
 // GET "/profile/my-orders" => renderizar lista de pedidos realizados
 
-router.get("/my-orders", isLoggedIn);
+router.get("/my-orders", isLoggedIn, async (req, res, next) => {
+  try {
+    const myOrders = await Order.find({ buyer: req.session.user._id }).populate(
+      "product"
+    );
+    res.render("profile/my-orders", { myOrders });
+  } catch (error) {
+    next(error);
+  }
+});
 
 // GET "/profile/:productId" => renderizar los detalles de los productos del usuario
 router.get("/:productId", async (req, res, next) => {
