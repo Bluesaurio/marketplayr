@@ -2,6 +2,33 @@
 
     <h3>Detalles del usuario</h3>
 
+    <img src="{{this.userDetails.profilePic}}" alt="profile-img">
+    <br>
+   <h4>Nombre: {{this.userDetails.username}}</h4> 
+   <br>
+   <h4>Email: {{this.userDetails.email}}</h4>
+   <br>
+   <h4>Fecha de creación: {{this.userDetails.createdAt}}</h4>
+   <br>
+   <br>
+   <h4>Lista de Productos</h4>
+
+   {{#each this.gameList}}
+    <img src="{{this.productPic}}" alt="game-img">
+    <p>Título: {{this.title}}</p>
+    <p>Plataforma: {{this.platform}}</p>
+    <p>Precio: {{this.price}} €</p>
+    <p>Stock: {{this.stock}}</p>
+    <p>Fecha de publicación: {{this.createdAt}}</p>
+
+    <form action="/admin/{{this._id}}/delete-product" method="post">
+         <button>Borrar producto</button></a>
+    </form>
+    
+   {{/each}}
+
+
+
 
 
 
