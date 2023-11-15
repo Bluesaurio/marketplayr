@@ -1,61 +1,91 @@
 <div class="order">
 
+  <div class="order-details">
+
   <h3>Detalles pedido</h3>
 
-  <p>Título: {{videogameOrder.title}}</p>
+  <p><strong>Producto: </strong>{{videogameOrder.title}}</p>
   <img src="{{videogameOrder.productPic}}" alt="" width="150px">
-  <p>Precio: {{videogameOrder.price}}€</p>
+  <p><strong>Precio total: </strong>{{videogameOrder.price}}€</p>
 
-  <form action="" method="post">
+  </div>
 
-    <div>
+  <div class="accordion" id="accordionPanelsStayOpenExample">
 
-    <label for="name">Nombre</label>
-    <input type="text" name="name" id="">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+          Datos del comprador
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+        <div class="accordion-body">
 
-    <br>
+          <label for="name"><strong>Nombre</strong></label>
+          <input type="text" name="name">
 
-    <label for="surname">Apellidos</label>
-    <input type="text" name="surname" id="">
+          <br>
 
-    <br>
+          <label for="surname"><strong>Apellidos</strong></label>
+          <input type="text" name="surname" >
 
-    <label for="address">Dirección</label>
-    <input type="text" name="address" id="">
+          <br>
 
-    <br>
+          <label for="address"><strong>Dirección</strong></label>
+          <input type="text" name="address">
 
-    <label for="zipcode">Código postal</label>
-    <input type="number" name="zipcode" id="">
- 
+          <br>
+
+          <label for="zipcode"><strong>Código postal</strong></label>
+          <input type="number" name="zipcode">
+          
+        </div>
+      </div>
     </div>
 
-    <div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+          Datos de la tarjeta
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+        <div class="accordion-body">
 
-    <label for="card">Nº de tarjeta</label>
-    <input type="number" name="card" id="">
-    {{!-- TODO Añadir comentario de que los datos no son reales --}}
+          <label for="card"><strong>Nº de tarjeta</strong></label>
+          <input type="number" name="card">
+          <div id="emailHelp" class="form-text">Los datos introducidos no son reales</div>
 
-    <br>
+          <label for="holder"><strong>Titular de la tarjeta</strong></label>
+          <input type="text" name="holder">
 
-    <label for="holder">Titular de la tarjeta</label>
-    <input type="text" name="holder" id="">
+          <br>
 
-    <br>
+          <label for="expirationDate"><strong>Fecha de expiración</strong></label>
+          <input type="date" name="expirationDate">
 
-    <label for="expirationDate">Fecha de expiración</label>
-    <input type="date" name="expirationDate" id="">
+          <br>
 
-    <br>
+          <label for="securityNumber"><strong>CVV</strong></label>
+          <input type="number" name="securityNumber">
 
-    <label for="securityNumber">CVV</label>
-    <input type="number" name="securityNumber" id="">
-
+        </div>
+      </div>
     </div>
 
-    <button>Finalizar compra</button>
-  
-  </form>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+          Finalizar compra
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+        <div class="accordion-body">
+          <button>Aceptar</button>
+        </div>
+      </div>
+    </div>
 
+  </div>
 
 </div>

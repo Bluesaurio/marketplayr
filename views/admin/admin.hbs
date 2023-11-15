@@ -1,15 +1,9 @@
-<div>
+<div class="admin-container">
 
-<h3>Vista de Administrador</h3>
+  <h3 class="admin-title">Vista de Administrador</h3>
 
-
-    {{#each this.allUsers}}
-    <a href="/admin/{{this._id}}/details"><li>{{this.username}}</li></a>
-    {{/each}}
-
-
-
-
-
+  {{#each this.allUsers}}
+    <a href="/admin/{{this._id}}/details" class="admin-link"><li class="admin-list-item">{{this.username}}</li></a>
+  {{/each}}
 
 </div>

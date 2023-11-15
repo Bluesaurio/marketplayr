@@ -169,6 +169,10 @@ h1 {
   cursor: pointer;
 }
 
+.button-details button:hover {
+  background-color: #45a049;
+}
+
 .profile-container {
   display: flex;
   margin-top: 10px;
@@ -250,6 +254,10 @@ h1 {
   cursor: pointer;
 }
 
+.create-button button:hover {
+  background-color: #45a049;
+}
+
 .profile-button {
   background-color: #4caf50;
   color: white;
@@ -259,6 +267,10 @@ h1 {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.profile-button:hover {
+  background-color: #45a049;
 }
 
 .edit-product {
@@ -294,6 +306,10 @@ h1 {
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.update-button:hover {
+  background-color: #45a049;
 }
 
 .delete-button {
@@ -340,4 +356,185 @@ h1 {
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.create-product button:hover {
+  background-color: #45a049;
+}
+
+.admin-button {
+  background-color: #00b7ff;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.admin-button:hover {
+  background-color: #05a1df;
+}
+
+.admin-container {
+  max-width: 350px;
+  margin: auto;
+  margin-top: 50px;
+  border: 1px solid gray;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.admin h3 {
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.admin-list-item {
+  list-style: none;
+  margin-bottom: 5px;
+}
+
+.admin-link {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.admin-link:hover {
+  text-decoration: underline;
+}
+.user-details-container {
+  display: flex;
+  margin: 20px;
+  flex-direction: row;
+}
+
+.user-details-column img {
+  max-width: 500px;
+  height: auto;
+  margin-bottom: 10px;
+  border: 1px solid gray;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.text-container {
+  border: 1px solid gray;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  max-width: 500px;
+  margin-right: 20px;
+}
+
+.product-container {
+  border: 1px solid lightgray;
+  padding: 10px;
+  margin-bottom: 15px;
+  max-width: 500px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.product-container img {
+  max-width: 25%;
+  height: auto;
+  margin-bottom: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.user-details-container h2 {
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.user-details-container h4 {
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.user-details-container button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.buy-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.buy-button:hover {
+  background-color: #45a049;
+}
+
+.order {
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+}
+
+.order-details {
+  text-align: center;
+  border: 1px solid lightgray;
+  padding: 10px;
+  margin-bottom: 15px;
+  max-width: 500px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.order-details h3 {
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.order-details p {
+  font-size: 15px;
+}
+
+.accordion {
+  width: 100%;
+}
+
+.accordion-item {
+  margin-bottom: 10px;
+}
+
+.accordion-button {
+  background-color: #00b7ff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.accordion-body {
+  padding: 15px;
+  border: 1px solid lightgray;
+}
+
+.accordion-body button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 auto;
+  display: block;
+}
+
+.accordion-body button:hover {
+  background-color: #45a049;
 }

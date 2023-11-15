@@ -1,35 +1,43 @@
-<div>
+<div class="user-details-container">
 
-    <h3>Detalles del usuario</h3>
+  <div class="user-details-column">
+
+    <h2>Detalles del usuario</h2>
 
     <img src="{{this.userDetails.profilePic}}" alt="profile-img">
-    <br>
-   <h4>Nombre: {{this.userDetails.username}}</h4> 
-   <br>
-   <h4>Email: {{this.userDetails.email}}</h4>
-   <br>
-   <h4>Fecha de creación: {{this.userDetails.createdAt}}</h4>
-   <br>
-   <br>
-   <h4>Lista de Productos</h4>
 
-   {{#each this.gameList}}
-    <img src="{{this.productPic}}" alt="game-img">
-    <p>Título: {{this.title}}</p>
-    <p>Plataforma: {{this.platform}}</p>
-    <p>Precio: {{this.price}} €</p>
-    <p>Stock: {{this.stock}}</p>
-    <p>Fecha de publicación: {{this.createdAt}}</p>
+    <div class="text-container">
+     <p><strong>Nombre: </strong>{{this.userDetails.username}}</p>
+     <p><strong>Email: </strong>{{this.userDetails.email}}</p>
+     <p><strong>Fecha de creación: </strong>{{this.userDetails.createdAt}}</p>
 
-    <form action="/admin/{{this._id}}/delete-product" method="post">
-         <button>Borrar producto</button></a>
-    </form>
-    
-   {{/each}}
+    </div>
 
+  </div>
 
+  <div class="user-products-column">
 
+    <h4>Productos a la venta</h4>
 
+    {{#each this.gameList}}
 
+      <div class="product-container">
+
+        <img src="{{this.productPic}}" alt="game-img">
+        <p><strong>Título: </strong>{{this.title}}</p>
+        <p><strong>Plataforma: </strong>{{this.platform}}</p>
+        <p><strong>Precio: </strong>{{this.price}} €</p>
+        <p><strong>Stock: </strong>{{this.stock}}</p>
+        <p><strong>Fecha de publicación: </strong>{{this.createdAt}}</p>
+
+        <form action="/admin/{{this._id}}/delete-product" method="post">
+          <button class="button">Borrar producto</button>
+        </form>
+
+      </div>
+
+    {{/each}}
+
+  </div>
 
 </div>
