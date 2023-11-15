@@ -53,6 +53,10 @@ const productSchema = new mongoose.Schema(
       required: true,
       default: 1,
     },
+    onSale: {
+      type: Boolean,
+      default: true,
+    },
     productPic: {
       type: String,
       required: true,

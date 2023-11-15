@@ -1,10 +1,20 @@
 <div>
   <h3>Productos de Xbox One</h3>
 
-  {{#each this.platformGames}}
+  {{#if platformGames}}
 
-  <img src="{{this.productPic}}" alt="">
+    {{#each platformGames}}
 
-  {{/each}}
+      {{#if onSale}}
+
+        <img src="{{this.productPic}}" alt="">
+
+      {{else}}
+
+      {{/if}}
+
+    {{/each}}
+
+  {{/if}}
 
 </div>

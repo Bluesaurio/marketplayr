@@ -4,9 +4,12 @@
 <h3>Lista de pedidos realizados</h3>
 
 {{#each this.myOrders}}
-<img src="{{this.product.productPic}}" alt="game-img" width="150px">
-<br>
-<li><a href="/profile/my-orders/{{this._id}}/details">{{this.product.title}}</a></li>
+
+  <a href="/profile/my-orders/{{this._id}}/details"><img src="{{this.product.productPic}}" alt="game-img" width="150px">
+  <p>{{this.product.title}}</p>
+  
+  </a>
+
 {{/each}}
 
 

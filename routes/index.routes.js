@@ -17,6 +17,7 @@ router.get("/", async (req, res, next) => {
         title: 1,
         productPic: 1,
         seller: 1,
+        onSale: 1,
       })
       .populate("seller");
     res.render("index", {

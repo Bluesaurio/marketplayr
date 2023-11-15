@@ -8,14 +8,14 @@ const uploader = require("../middlewares/cloudinary.middleware");
 const Order = require("../models/Order.model");
 
 // GET "/profile" => Renderizar vista perfil usuario
-
 router.get("/", isLoggedIn, async (req, res, next) => {
   // Buscar en la BD información del user
   try {
     const userProfile = await User.findById(req.session.user._id);
     const allVideogames = await Product.find({
       seller: req.session.user._id,
-    }).select({ title: 1, productPic: 1 });
+    }).select({ title: 1, productPic: 1, onSale: 1 });
+    console.log(allVideogames);
     if (allVideogames !== null) {
       res.render("profile/user.hbs", {
         userProfile,
@@ -47,6 +47,7 @@ router.post(
       price,
       genre,
       stock,
+      onSale,
     } = req.body;
 
     try {
@@ -60,6 +61,7 @@ router.post(
         price,
         genre,
         stock,
+        onSale,
       };
 
       if (req.file !== undefined) {
@@ -106,6 +108,7 @@ router.post(
       price,
       genre,
       stock,
+      onSale,
     } = req.body;
 
     try {
@@ -119,6 +122,7 @@ router.post(
         price,
         genre,
         stock,
+        onSale,
         productPic: req.file.path,
         seller: req.session.user._id,
       });

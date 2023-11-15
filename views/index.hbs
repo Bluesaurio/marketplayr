@@ -1,19 +1,31 @@
 <div class="home">
 
 
-{{#each this.allVideogames}}
+  {{#if allVideogames}}
 
-  <div class="product">
+    {{#each allVideogames}}
 
-    <p>
-      <a href="/product/{{this._id}}"><img src="{{this.productPic}}" alt="imagen-producto" width="300px">
-      <p class="titulo-home">{{this.title}}</p>
-      </a>
-    </p>
+      {{#if onSale}}
 
-  </div>
+        <div class="product">
 
-{{/each}}
+          <p>
+            <a href="/product/{{this._id}}"><img src="{{this.productPic}}" alt="imagen-producto" width="300px">
+            <p class="titulo-home">{{this.title}}</p>
+            </a>
+          </p>
+
+        </div>
+
+      {{else}}
+
+      {{/if}}
+
+    {{/each}}
+
+  {{/if}}
+
+
 
 </div>
 

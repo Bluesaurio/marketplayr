@@ -32,10 +32,16 @@ router.post("/:productId/details", isLoggedIn, async (req, res, next) => {
       orderPrice: orderedProduct.price,
     });
 
+    await Product.findByIdAndUpdate(productId, { onSale: false });
+
+    console.log("Después del pedido", orderedProduct);
+
     res.redirect("/profile");
   } catch (error) {
     next(error);
   }
 });
+
+router.post("/:productId/delete");
 
 module.exports = router;
