@@ -89,6 +89,49 @@ h1 {
   padding: 10px 20px;
 }
 
+.platforms-products {
+  width: 20%;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid;
+  border-radius: 10px;
+  padding-top: 10px;
+}
+
+.platforms h3 {
+  font-weight: bold;
+  font-size: 35px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.platform-titles {
+  display: inline-block;
+  color: white;
+  background-color: #00b7ff;
+  padding: 5px 10px;
+  font-weight: bold;
+  font-size: 2vw;
+  border-radius: 10px;
+}
+
+.platforms-products img {
+  max-width: 100%;
+  height: auto;
+}
+
+.platforms-products a {
+  color: white;
+  text-decoration: none;
+}
+
+.platforms-products p {
+  margin-top: 10px;
+}
+
 .home {
   display: flex;
   flex-wrap: wrap;
@@ -97,7 +140,7 @@ h1 {
 }
 
 .product {
-  width: calc(20% - 10px);
+  width: 20%;
   margin-bottom: 20px;
   box-sizing: border-box;
   text-align: center;
@@ -537,4 +580,65 @@ h1 {
 
 .accordion-body button:hover {
   background-color: #45a049;
+}
+
+.my-sales h3 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.my-orders h3 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.order-game {
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 15px;
+  max-width: 500px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid;
+  border-radius: 10px;
+}
+
+.order-game a {
+  text-decoration: none;
+  color: #007bff;
+  display: block;
+}
+
+.order-game img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.order-details-container {
+  display: flex;
+  margin-top: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid;
+  border-radius: 10px;
+  max-width: 700px;
+}
+
+.order-details-container img {
+  padding: 10px;
+}
+
+.order-details-container h3 {
+  font-weight: bold;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.order-details-container .text-details {
+  flex: 1;
+  padding: 10px;
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
 }

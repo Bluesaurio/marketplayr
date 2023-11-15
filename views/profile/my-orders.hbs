@@ -1,14 +1,20 @@
-<div>
+<div class="my-orders">
 
 
 <h3>Lista de pedidos realizados</h3>
 
 {{#each this.myOrders}}
 
-  <a href="/profile/my-orders/{{this._id}}/details"><img src="{{this.product.productPic}}" alt="game-img" width="150px">
-  <p>{{this.product.title}}</p>
-  
-  </a>
+
+  <div class="order-game">
+
+    <a href="/profile/my-orders/{{this._id}}/details"><img src="{{this.product.productPic}}" alt="game-img" width="150px">
+    <p>{{this.product.title}}</p>
+    
+    </a>
+
+  </div>
+
 
 {{/each}}
 

@@ -1,17 +1,19 @@
-<div>
+<div class="my-sales">
 
     <h3>Lista de productos vendidos</h3>
 
     {{#each this.mySales}}
         {{#if this.product.onSale}}
             {{else}}
-                <div>
+                <div class="order-game">
                     <img src="{{this.product.productPic}}" alt="game-img" width="100px">
-                    <h5>Título: {{this.product.title}}</h5>
-                    <h5>Precio: {{this.product.price}}€</h5>
-                    <h5>Comprador: {{this.buyer.username}}</h5>
-                    <h5>Dirección del comprador: {{this.address}}</h5>
-                    <h5>Email del comprador: {{this.buyer.email}}</h5>
+
+                    <p><strong>Producto: </strong>{{this.product.title}}</p>
+                    <p><strong>Precio: </strong>{{this.product.price}}</p>
+                    <p><strong>Comprador: </strong>{{this.buyer.username}}</p>
+                    <p><strong>Dirección de envío: </strong>{{this.address}}</p>
+                    <p><strong>E-mail del comprador: </strong>{{this.buyer.email}}</p>
+
                 </div>
         {{/if}}
     {{/each}}
