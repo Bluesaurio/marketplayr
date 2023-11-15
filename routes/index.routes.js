@@ -46,4 +46,7 @@ router.use("/order", orderRouter);
 const platformRouter = require("./platform.routes.js");
 router.use("/platform", platformRouter);
 
+const searchRouter = require("./search.routes.js");
+router.use("/search", searchRouter);
+
 module.exports = router;

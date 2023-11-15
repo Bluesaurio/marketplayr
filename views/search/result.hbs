@@ -1,0 +1,24 @@
+<div>
+
+    <h3>Resultados de la búsqueda</h3>
+
+    {{#if this.videogamesFound}}
+
+    {{#each this.videogamesFound}}
+
+
+    <a href="/product/{{this._id}}">
+    <img src="{{this.productPic}}" alt="game-img">
+    <h3>{{this.title}}</h3>
+    </a>
+
+    {{/each}}
+
+    {{else}}
+
+    <h3>No se encontraron resultados con ese título.</h3>
+
+    {{/if}}
+
+
+</div>
