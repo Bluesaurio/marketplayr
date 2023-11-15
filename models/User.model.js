@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema(
       enum: ["user", "admin"],
       default: "user",
     },
-    profilePic: String, // TODO Intentar poner default image
+    profilePic: String,
   },
   {
     timestamps: true,

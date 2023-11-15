@@ -79,7 +79,9 @@ h1 {
   padding: 10px;
   text-decoration: none;
   border-radius: 10px;
-  justify-content: center;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .nav-link {
@@ -88,6 +90,36 @@ h1 {
   font-size: 20px;
   font-weight: bold;
   padding: 10px 20px;
+}
+
+.logo {
+  height: 30px; /* Ajusta el tamaño del logo según tus preferencias */
+  width: 200px;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.nav-text {
+  color: white;
+  font-style: italic;
+  margin-left: -20px;
+}
+
+.search-form input {
+  height: 30px;
+  padding: 5px;
+  font-size: 14px;
+}
+
+.search-form button {
+  height: 30px;
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: #ff8c00;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .platforms {
