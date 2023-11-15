@@ -1,11 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gabarito&family=Nunito+Sans:opsz,wght@6..12,500&family=Open+Sans:ital,wght@0,500;1,400&family=Pacifico&family=Roboto:wght@100;400&display=swap");
 
 body {
-  padding: 50px;
+  padding: 50px 100px;
   font-family: "Open Sans";
   font-size: 14px;
+  background-color: beige;
   background-image: url("../images/background2.png");
-  background-size: cover;
+  background-origin: border-box;
 }
 
 a {
@@ -25,7 +26,7 @@ h1 {
   max-width: 350px;
   margin: auto;
   margin-top: 50px;
-  border: 1px solid gray;
+  border: 1px solid #00b7ff;
   border-radius: 8px;
   padding: 20px;
   background-color: white;
@@ -51,7 +52,7 @@ h1 {
   max-width: 350px;
   margin: auto;
   margin-top: 50px;
-  border: 1px solid gray;
+  border: 1px solid #00b7ff;
   border-radius: 8px;
   padding: 20px;
   background-color: white;
@@ -89,18 +90,32 @@ h1 {
   padding: 10px 20px;
 }
 
+.platforms {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid #00b7ff;
+  margin-top: 10px;
+}
+
 .platforms-products {
   width: 20%;
   margin-bottom: 20px;
-  box-sizing: border-box;
   text-align: center;
   background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid;
+  border: 1px solid #00b7ff;
   border-radius: 10px;
   padding-top: 10px;
 }
 
 .platforms h3 {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   font-weight: bold;
   font-size: 35px;
   margin-bottom: 10px;
@@ -137,17 +152,23 @@ h1 {
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid #00b7ff;
+  margin-top: 10px;
 }
 
 .product {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   width: 20%;
   margin-bottom: 20px;
-  box-sizing: border-box;
   text-align: center;
   background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid;
+  border: 1px solid #00b7ff;
   border-radius: 10px;
   padding-top: 10px;
+  margin: 10px;
 }
 
 .product img {
@@ -177,7 +198,7 @@ h1 {
   display: flex;
   margin-top: 10px;
   background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid;
+  border: 1px solid #00b7ff;
   border-radius: 10px;
 }
 
@@ -220,7 +241,7 @@ h1 {
   display: flex;
   margin-top: 10px;
   max-width: 800px;
-  border: 1px solid;
+  border: 1px solid #00b7ff;
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.8);
 }
@@ -320,7 +341,7 @@ h1 {
   max-width: 350px;
   margin: auto;
   margin-top: 50px;
-  border: 1px solid gray;
+  border: 1px solid #00b7ff;
   border-radius: 8px;
   padding: 20px;
   background-color: white;
@@ -368,7 +389,7 @@ h1 {
   max-width: 350px;
   margin: auto;
   margin-top: 50px;
-  border: 1px solid gray;
+  border: 1px solid #00b7ff;
   border-radius: 8px;
   padding: 20px;
   background-color: white;
@@ -422,7 +443,7 @@ h1 {
   max-width: 350px;
   margin: auto;
   margin-top: 50px;
-  border: 1px solid gray;
+  border: 1px solid #00b7ff;
   border-radius: 8px;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.8);
@@ -449,6 +470,7 @@ h1 {
 }
 .user-details-container {
   display: flex;
+  flex-wrap: wrap;
   margin: 20px;
   flex-direction: row;
 }
@@ -457,14 +479,14 @@ h1 {
   max-width: 500px;
   height: auto;
   margin-bottom: 10px;
-  border: 1px solid gray;
+  border: 1px solid #00b7ff;
   border-radius: 8px;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.8);
 }
 
 .text-container {
-  border: 1px solid gray;
+  border: 1px solid #00b7ff;
   border-radius: 8px;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.8);
@@ -473,7 +495,7 @@ h1 {
 }
 
 .product-container {
-  border: 1px solid lightgray;
+  border: 1px solid #00b7ff;
   padding: 10px;
   margin-bottom: 15px;
   max-width: 500px;
@@ -528,7 +550,7 @@ h1 {
 
 .order-details {
   text-align: center;
-  border: 1px solid lightgray;
+  border: 1px solid #00b7ff;
   padding: 10px;
   margin-bottom: 15px;
   max-width: 500px;
@@ -564,7 +586,7 @@ h1 {
 
 .accordion-body {
   padding: 15px;
-  border: 1px solid lightgray;
+  border: 1px solid #00b7ff;
 }
 
 .accordion-body button {
@@ -600,7 +622,7 @@ h1 {
   margin-bottom: 15px;
   max-width: 500px;
   background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid;
+  border: 1px solid #00b7ff;
   border-radius: 10px;
 }
 
@@ -620,7 +642,7 @@ h1 {
   display: flex;
   margin-top: 10px;
   background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid;
+  border: 1px solid #00b7ff;
   border-radius: 10px;
   max-width: 700px;
 }
