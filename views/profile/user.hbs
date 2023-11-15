@@ -23,31 +23,32 @@
     <p><strong>Email:</strong> {{userProfile.email}}</p>
 
       {{#if this.allVideogames}}
-
         <h4>Productos en Venta</h4>
 
-        <div class="product-list">
+          <div class="product-list">
+            
+             {{#each this.allVideogames}}
+               {{#if this.onSale}}
 
-          {{#each this.allVideogames}}
+                <div class="product-item">
 
-            <div class="product-item">
+                  <a href="/profile/{{this._id}}" class="product-link">
+                    <img class="profileGames" src="{{this.productPic}}" alt="game-img">
 
-              <a href="/profile/{{this._id}}" class="product-link">
-                <img class="profileGames" src="{{this.productPic}}" alt="game-img">
+                    <div class="product-title-box">
 
-                <div class="product-title-box">
+                      <span class="product-title">{{this.title}}</span>
 
-                  <span class="product-title">{{this.title}}</span>
+                    </div>
+
+                  </a>
 
                 </div>
 
-              </a>
-
-            </div>
-
-          {{/each}}
-
-        </div>
+              {{/if}}
+            {{/each}}
+          
+         </div>
 
       {{/if}}
 
@@ -61,7 +62,9 @@
         <button>Ver mis pedidos</button>
       </a>
 
-
+      <a href="/profile/my-sales" class="create-button">
+        <button>Ver mis ventas</button>
+      </a>
     {{/if}}
 
       {{#if this.isAdmin}}

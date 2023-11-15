@@ -179,13 +179,30 @@ router.get(
   }
 );
 
+// GET "/profile/my-sales" => renderiza el listado de productos vendidos con detalles del comprador
+
+router.get("/my-sales", isLoggedIn, async (req, res, next) => {
+  try {
+    const mySales = await Order.find({
+      seller: req.session.user._id,
+    })
+      .populate("buyer")
+      .populate("seller")
+      .populate("product");
+    console.log("mis ventas son: ", mySales);
+    res.render("profile/my-sales.hbs", { mySales });
+  } catch (error) {
+    next(error);
+  }
+});
+
 // GET "/profile/:productId" => renderizar los detalles de los productos del usuario
-router.get("/:productId", async (req, res, next) => {
+router.get("/:productId", isLoggedIn, async (req, res, next) => {
   const productId = await Product.findById(req.params.productId);
   res.render("profile/product-details.hbs", { productId });
 });
 // GET "/profile/:productId/edit" => Renderizar un formulario para editar la información del producto
-router.get("/:productId/edit", async (req, res, next) => {
+router.get("/:productId/edit", isLoggedIn, async (req, res, next) => {
   try {
     const productEdit = await Product.findById(req.params.productId);
     res.render("profile/product-edit.hbs", {
