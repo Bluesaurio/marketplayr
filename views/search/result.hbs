@@ -1,22 +1,31 @@
-<div>
+<div class="search-result">
 
     <h3>Resultados de la búsqueda</h3>
 
     {{#if this.videogamesFound}}
 
-    {{#each this.videogamesFound}}
+        {{#each this.videogamesFound}}
+
+            {{#if onSale}}
 
 
-    <a href="/product/{{this._id}}">
-    <img src="{{this.productPic}}" alt="game-img">
-    <h3>{{this.title}}</h3>
-    </a>
+            <div class="search-products">
 
-    {{/each}}
+                <a href="/product/{{this._id}}">
+                <img src="{{this.productPic}}" alt="game-img">
+                <p class="search-title">{{this.title}}<p>
+                </a>
 
+            </div>
+            
+            {{/if}}
+
+        {{/each}}
+
+            
     {{else}}
 
-    <h3>No se encontraron resultados con ese título.</h3>
+        <h3>No se encontraron resultados con ese título.</h3>
 
     {{/if}}
 
