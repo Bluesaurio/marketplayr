@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("../models/User.model");
 const { isLoggedIn, isAdmin } = require("../middlewares/auth.middlewares");
 const Product = require("../models/Product.model");
+const fetch = require("node-fetch");
 
 const uploader = require("../middlewares/cloudinary.middleware");
 const Order = require("../models/Order.model");
