@@ -6,8 +6,10 @@ const Product = require("../models/Product.model.js");
 
 router.get("/", async (req, res, next) => {
   try {
+    const regex = new RegExp(req.query.productTitle, "i");
+
     const videogamesFound = await Product.find({
-      title: req.query.productTitle,
+      title: regex,
     });
     console.log(videogamesFound);
     res.render("search/result.hbs", { videogamesFound });
