@@ -4,9 +4,6 @@
 
   <form action="/profile/{{this.productEdit._id}}/editProduct" method="post" enctype="multipart/form-data">
 
-  <label for="title">Título</label>
-  <input type="text" name="title" value="{{this.productEdit.title}}">
-
   <br>
 
   <label for="platform">Plataforma</label>
@@ -24,32 +21,12 @@
   <br>
 
   <label for="edition">Edición</label>
-  <input type="text" name="edition" value="{{this.productEdit.edition}}">
-
-  <br>
-
-  <label for="releaseYear">Año</label>
-  <input type="number" name="releaseYear" value="{{this.productEdit.releaseYear}}">
-
-  <br>
-
-  <label for="developer">Desarrollador</label>
-  <input type="text" name="developer" value="{{this.productEdit.developer}}">
-
-  <br>
-
-  <label for="publisher">Distribuidor</label>
-  <input type="text" name="publisher" value="{{this.productEdit.publisher}}">
+  <input type="text" name="edition" value="{{this.productEdit.edition}}" placeholder="Opcional">
 
   <br>
 
   <label for="price">Precio</label>
   <input type="number" name="price"value="{{this.productEdit.price}}">
-
-  <br>
-
-  <label for="genre">Género</label>
-  <input type="text" name="genre" value="{{this.productEdit.genre}}">
 
   <br>
 

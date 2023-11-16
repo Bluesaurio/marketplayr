@@ -127,18 +127,7 @@ router.post(
   "/add-product/search",
   uploader.single("productPic"),
   async (req, res, next) => {
-    const {
-      platform,
-      edition,
-      releaseYear,
-      developer,
-      publisher,
-      price,
-      genre,
-      stock,
-      onSale,
-      game,
-    } = req.body;
+    const { platform, edition, price, stock, onSale, game } = req.body;
 
     console.log(game);
 
@@ -152,11 +141,7 @@ router.post(
         title,
         platform,
         edition,
-        releaseYear,
-        developer,
-        publisher,
         price,
-        genre,
         stock,
         onSale,
         apiId,
@@ -233,9 +218,13 @@ router.get("/my-sales", isLoggedIn, async (req, res, next) => {
 // GET "/profile/:productId" => renderizar los detalles de los productos del usuario
 router.get("/:productId", isLoggedIn, async (req, res, next) => {
   const dbProduct = await Product.findById(req.params.productId);
+  const response = await fetch(
+    `https://api.rawg.io/api/games/${dbProduct.apiId}?key=${process.env.API_KEY}`
+  );
+  const apiProduct = await response.json();
 
   // Hacer llamada a la API con el product.apiId y pasarlo al render
-  res.render("profile/product-details.hbs", { dbProduct });
+  res.render("profile/product-details.hbs", { dbProduct, apiProduct });
 });
 
 // GET "/profile/:productId/edit" => Renderizar un formulario para editar la información del producto

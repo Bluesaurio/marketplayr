@@ -9,9 +9,14 @@ router.get("/:productId", async (req, res, next) => {
     const oneVideogame = await Product.findById(req.params.productId).populate(
       "seller"
     );
+    const response = await fetch(
+      `https://api.rawg.io/api/games/${oneVideogame.apiId}?key=${process.env.API_KEY}`
+    );
+    const apiProduct = await response.json();
     // console.log(oneVideogame);
     res.render("product/product-details.hbs", {
       oneVideogame,
+      apiProduct,
     });
   } catch (error) {
     next(error);

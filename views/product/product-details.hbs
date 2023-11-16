@@ -15,12 +15,20 @@
         <p><strong>Título:</strong> {{this.oneVideogame.title}}</p>
         <p><strong>Plataforma:</strong> {{this.oneVideogame.platform}}</p>
         <p><strong>Edición:</strong> {{this.oneVideogame.edition}}</p>
-        <p><strong>Año:</strong> {{this.oneVideogame.releaseYear}}</p>
-        <p><strong>Desarrollador:</strong> {{this.oneVideogame.developer}}</p>
-        <p><strong>Distribuidor:</strong> {{this.oneVideogame.publisher}}</p>
+        <p><strong>Año:</strong> {{this.apiProduct.released}}</p>
+        <p><strong>Desarrollador:</strong>
+        {{#each this.apiProduct.developers}}
+         {{this.name}}, 
+         {{/each}}</p>
+        <p><strong>Distribuidor:</strong> 
+        {{#each this.apiProduct.publishers}}
+        {{this.name}}, 
+        {{/each}}</p>
         <p><strong>Precio:</strong> {{this.oneVideogame.price}}€</p>
-        <p><strong>Género:</strong> {{this.oneVideogame.genre}}</p>
-        <p><strong>Stock:</strong> {{this.oneVideogame.stock}}</p>
+        <p><strong>Género:</strong> 
+        {{#each this.apiProduct.genres}}
+        {{this.name}}, 
+        {{/each}}</p>
         <p><strong>Vendedor:</strong> {{this.oneVideogame.seller.username}}</p>
 
     </div>

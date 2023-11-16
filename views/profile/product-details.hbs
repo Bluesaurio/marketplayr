@@ -15,11 +15,26 @@
         <p><strong>Título:</strong> {{this.dbProduct.title}}</p>
         <p><strong>Plataforma:</strong> {{this.dbProduct.platform}}</p>
         <p><strong>Edición:</strong> {{this.dbProduct.edition}}</p>
-        <p><strong>Año:</strong> {{this.dbProduct.releaseYear}}</p>
-        <p><strong>Desarrollador:</strong> {{this.dbProduct.developer}}</p>
-        <p><strong>Distribuidor:</strong> {{this.dbProduct.publisher}}</p>
+        <p><strong>Año:</strong> {{this.apiProduct.released}}</p>
+
+        <p><strong>Desarrollador:</strong>
+        {{#each this.apiProduct.developers}}
+         {{this.name}}, 
+         {{/each}}</p>
+
+        <p><strong>Distribuidor:</strong> 
+        {{#each this.apiProduct.publishers}}
+        {{this.name}}, 
+        {{/each}}</p>
+
+
         <p><strong>Precio:</strong> {{this.dbProduct.price}}€</p>
-        <p><strong>Género:</strong> {{this.dbProduct.genre}}</p>
+
+
+        <p><strong>Género:</strong> 
+        {{#each this.apiProduct.genres}}
+        {{this.name}}, 
+        {{/each}}</p>
 
     </div>
 
