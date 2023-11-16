@@ -2,7 +2,7 @@
 
   <div class="image-details">
 
-    <img src="{{this.productId.productPic}}" alt="imagen-producto" width="300px">
+    <img src="{{this.dbProduct.productPic}}" alt="imagen-producto" width="300px">
 
   </div>
 
@@ -12,21 +12,20 @@
 
       <h3>Detalles del Producto</h3>
       
-        <p><strong>Título:</strong> {{this.productId.title}}</p>
-        <p><strong>Plataforma:</strong> {{this.productId.platform}}</p>
-        <p><strong>Edición:</strong> {{this.productId.edition}}</p>
-        <p><strong>Año:</strong> {{this.productId.releaseYear}}</p>
-        <p><strong>Desarrollador:</strong> {{this.productId.developer}}</p>
-        <p><strong>Distribuidor:</strong> {{this.productId.publisher}}</p>
-        <p><strong>Precio:</strong> {{this.productId.price}}€</p>
-        <p><strong>Género:</strong> {{this.productId.genre}}</p>
-        <p><strong>Stock:</strong> {{this.productId.stock}}</p>
+        <p><strong>Título:</strong> {{this.dbProduct.title}}</p>
+        <p><strong>Plataforma:</strong> {{this.dbProduct.platform}}</p>
+        <p><strong>Edición:</strong> {{this.dbProduct.edition}}</p>
+        <p><strong>Año:</strong> {{this.dbProduct.releaseYear}}</p>
+        <p><strong>Desarrollador:</strong> {{this.dbProduct.developer}}</p>
+        <p><strong>Distribuidor:</strong> {{this.dbProduct.publisher}}</p>
+        <p><strong>Precio:</strong> {{this.dbProduct.price}}€</p>
+        <p><strong>Género:</strong> {{this.dbProduct.genre}}</p>
 
     </div>
 
     <div class="button-details">
 
-      <a href="/profile/{{this.productId._id}}/edit">
+      <a href="/profile/{{this.dbProduct._id}}/edit">
         <button>Editar</button>
       </a>
 

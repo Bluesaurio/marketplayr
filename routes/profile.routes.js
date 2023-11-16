@@ -77,7 +77,6 @@ router.post(
 );
 
 // POST "/profile/:productId/delete" para borrar el producto seleccionado
-
 router.post("/:productId/delete", async (req, res, next) => {
   // console.log("Borrando producto", req.params.productId);
   try {
@@ -87,19 +86,48 @@ router.post("/:productId/delete", async (req, res, next) => {
     next(error);
   }
 });
+
 // GET "/profile/add-product" => Renderizar un formulario para crear productos
 router.get("/add-product", isLoggedIn, (req, res, next) => {
   res.render("profile/add-product.hbs");
 });
 
-// POST "/profile/add-product" => Crear el producto en la BD con la info del form y redireccionar al producto
+//GET "/profile/add-product-search" => Petición a la API de títulos de productos
+router.get("/add-product/search", async (req, res, next) => {
+  try {
+    const searchTitle = req.query.title || "";
+    console.log(req.query.title);
 
+    const response = await fetch(
+      `https://api.rawg.io/api/games?key=${process.env.API_KEY}&search=${searchTitle}
+      `
+    );
+
+    const data = await response.json();
+    const gameName = data.results.map((game) => {
+      return {
+        name: game.name,
+        id: game.id,
+        img: game.background_image,
+      };
+    });
+
+    console.log("Esto es el resultado", gameName);
+
+    res.render("profile/product-query-details.hbs", {
+      gameName,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// POST "/profile/add-product" => Crear el producto en la BD con la info del form y redireccionar al producto
 router.post(
-  "/add-product",
+  "/add-product/search",
   uploader.single("productPic"),
   async (req, res, next) => {
     const {
-      title,
       platform,
       edition,
       releaseYear,
@@ -109,7 +137,15 @@ router.post(
       genre,
       stock,
       onSale,
+      game,
     } = req.body;
+
+    console.log(game);
+
+    const comaIndex = game.indexOf(",");
+
+    const apiId = game.slice(0, comaIndex);
+    const title = game.slice(comaIndex + 1, game.length);
 
     try {
       const newProduct = await Product.create({
@@ -123,6 +159,7 @@ router.post(
         genre,
         stock,
         onSale,
+        apiId,
         productPic: req.file.path,
         seller: req.session.user._id,
       });
@@ -150,7 +187,6 @@ router.post(
 );
 
 // GET "/profile/my-orders" => renderizar lista de pedidos realizados
-
 router.get("/my-orders", isLoggedIn, async (req, res, next) => {
   try {
     const myOrders = await Order.find({ buyer: req.session.user._id }).populate(
@@ -163,7 +199,6 @@ router.get("/my-orders", isLoggedIn, async (req, res, next) => {
 });
 
 // GET "/profile/my-orders/:orderId/details" renderizar los detalles del producto seleccionado en la lista de pedidos
-
 router.get(
   "/my-orders/:orderId/details",
   isLoggedIn,
@@ -180,7 +215,6 @@ router.get(
 );
 
 // GET "/profile/my-sales" => renderiza el listado de productos vendidos con detalles del comprador
-
 router.get("/my-sales", isLoggedIn, async (req, res, next) => {
   try {
     const mySales = await Order.find({
@@ -198,9 +232,12 @@ router.get("/my-sales", isLoggedIn, async (req, res, next) => {
 
 // GET "/profile/:productId" => renderizar los detalles de los productos del usuario
 router.get("/:productId", isLoggedIn, async (req, res, next) => {
-  const productId = await Product.findById(req.params.productId);
-  res.render("profile/product-details.hbs", { productId });
+  const dbProduct = await Product.findById(req.params.productId);
+
+  // Hacer llamada a la API con el product.apiId y pasarlo al render
+  res.render("profile/product-details.hbs", { dbProduct });
 });
+
 // GET "/profile/:productId/edit" => Renderizar un formulario para editar la información del producto
 router.get("/:productId/edit", isLoggedIn, async (req, res, next) => {
   try {

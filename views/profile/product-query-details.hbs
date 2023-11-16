@@ -1,0 +1,66 @@
+<div class="create-product">
+  <h3>Crear producto</h3>
+
+  <form action="/profile/add-product/search" method="post" enctype="multipart/form-data">
+
+  <label for="game">Título</label>
+  <select name="game" class="form-select">
+    <option value="" disabled selected>Selecciona un título</option>
+    {{#each this.gameName}}
+    <option value="{{this.id}},{{this.name}}">{{this.name}}</option>
+    {{/each}}
+  </select>
+
+  <br>
+
+  <label for="platform">Plataforma</label>
+  <select name="platform" class="form-select">
+    <option value="" disabled selected>Selecciona una plataforma</option>
+    <option value="Nintendo Switch">Nintendo Switch</option>
+    <option value="Playstation 5">Playstation 5</option>
+    <option value="Playstation 4">Playstation 4</option>
+    <option value="Xbox Series X">Xbox Series X</option>
+    <option value="Xbox One">Xbox One</option>
+  </select>
+
+  <br>
+
+  <label for="edition">Edición</label>
+  <input type="text" name="edition" placeholder="Opcional">
+
+  <br>
+
+  <label for="releaseYear">Año</label>
+  <input type="number" name="releaseYear" placeholder="Opcional">
+
+  <br>
+
+  <label for="developer">Desarrollador</label>
+  <input type="text" name="developer" placeholder="Opcional">
+
+  <br>
+
+  <label for="publisher">Distribuidor</label>
+  <input type="text" name="publisher" placeholder="Opcional">
+
+  <br>
+
+  <label for="price">Precio</label>
+  <input type="number" name="price">
+
+  <br>
+
+  <label for="genre">Género</label>
+  <input type="text" name="genre" placeholder="Opcional">
+
+  <br>
+
+  <label for="productPic">Imagen del producto</label>
+  <input type="file" name="productPic">
+
+  <br>
+
+  <button class="create-button">Crear producto</button>
+  
+  </form>
+</div>
