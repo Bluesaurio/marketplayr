@@ -92,8 +92,14 @@ h1 {
   padding: 10px 20px;
 }
 
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .logo {
-  height: 30px; /* Ajusta el tamaño del logo según tus preferencias */
+  height: 20px;
   width: 200px;
   margin-right: 10px;
   object-fit: cover;
