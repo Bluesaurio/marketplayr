@@ -1,9 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/User.model");
 const Order = require("../models/Order.model.js");
 const Product = require("../models/Product.model.js");
-const { isLoggedIn, isAdmin } = require("../middlewares/auth.middlewares.js");
+const { isLoggedIn } = require("../middlewares/auth.middlewares.js");
 
 //GET "order/:productId/details" => Renderizar vista del pedido
 router.get("/:productId/details", isLoggedIn, async (req, res, next) => {

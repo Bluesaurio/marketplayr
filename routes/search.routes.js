@@ -6,12 +6,11 @@ const Product = require("../models/Product.model.js");
 
 router.get("/", async (req, res, next) => {
   try {
+    //* Utilizamos Regex para hacer una búsqueda que no sea case-sensitive
     const regex = new RegExp(req.query.productTitle, "i");
-
     const videogamesFound = await Product.find({
       title: regex,
     });
-    console.log(videogamesFound);
     res.render("search/result.hbs", { videogamesFound });
   } catch (error) {
     next(error);

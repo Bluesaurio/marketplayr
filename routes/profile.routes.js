@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User.model");
-const { isLoggedIn, isAdmin } = require("../middlewares/auth.middlewares");
+const { isLoggedIn } = require("../middlewares/auth.middlewares");
 const Product = require("../models/Product.model");
 const fetch = require("node-fetch");
 
@@ -16,7 +16,7 @@ router.get("/", isLoggedIn, async (req, res, next) => {
     const allVideogames = await Product.find({
       seller: req.session.user._id,
     }).select({ title: 1, productPic: 1, onSale: 1 });
-    console.log(allVideogames);
+
     if (allVideogames !== null) {
       res.render("profile/user.hbs", {
         userProfile,
@@ -37,7 +37,6 @@ router.post(
   "/:productId/editProduct",
   uploader.single("productPic"),
   async (req, res, next) => {
-    console.log(req.file);
     const {
       title,
       platform,
@@ -79,7 +78,6 @@ router.post(
 
 // POST "/profile/:productId/delete" para borrar el producto seleccionado
 router.post("/:productId/delete", async (req, res, next) => {
-  // console.log("Borrando producto", req.params.productId);
   try {
     await Product.findByIdAndDelete(req.params.productId);
     res.redirect("/profile");
@@ -97,7 +95,6 @@ router.get("/add-product", isLoggedIn, (req, res, next) => {
 router.get("/add-product/search", async (req, res, next) => {
   try {
     const searchTitle = req.query.title || "";
-    console.log(req.query.title);
 
     const response = await fetch(
       `https://api.rawg.io/api/games?key=${process.env.API_KEY}&search=${searchTitle}
@@ -112,8 +109,6 @@ router.get("/add-product/search", async (req, res, next) => {
         img: game.background_image,
       };
     });
-
-    console.log("Esto es el resultado", gameName);
 
     res.render("profile/product-query-details.hbs", {
       gameName,
@@ -130,10 +125,8 @@ router.post(
   async (req, res, next) => {
     const { platform, edition, price, stock, onSale, game } = req.body;
 
-    console.log(game);
-
+    //* Conseguimos el título y el ID del juego en un sólo string, separados por una coma, así que hay que separarlos en 2 variables diferentes
     const comaIndex = game.indexOf(",");
-
     const apiId = game.slice(0, comaIndex);
     const title = game.slice(comaIndex + 1, game.length);
 
@@ -209,7 +202,7 @@ router.get("/my-sales", isLoggedIn, async (req, res, next) => {
       .populate("buyer")
       .populate("seller")
       .populate("product");
-    console.log("mis ventas son: ", mySales);
+
     res.render("profile/my-sales.hbs", { mySales });
   } catch (error) {
     next(error);
@@ -223,8 +216,6 @@ router.get("/:productId", isLoggedIn, async (req, res, next) => {
     `https://api.rawg.io/api/games/${dbProduct.apiId}?key=${process.env.API_KEY}`
   );
   const apiProduct = await response.json();
-
-  // Hacer llamada a la API con el product.apiId y pasarlo al render
   res.render("profile/product-details.hbs", { dbProduct, apiProduct });
 });
 

@@ -1,9 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/User.model");
-const Order = require("../models/Order.model.js");
 const Product = require("../models/Product.model.js");
-const { isLoggedIn, isAdmin } = require("../middlewares/auth.middlewares.js");
 
 router.get("/nintendo-switch", async (req, res, next) => {
   try {

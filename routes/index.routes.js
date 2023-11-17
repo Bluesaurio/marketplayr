@@ -1,14 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const Product = require("../models/Product.model.js");
-const { isLoggedIn, isAdmin } = require("../middlewares/auth.middlewares.js");
-
-const uploader = require("../middlewares/cloudinary.middleware");
-
-/* GET home page */
-// router.get("/", (req, res, next) => {
-//   res.render("index");
-// });
 
 router.get("/", async (req, res, next) => {
   try {
