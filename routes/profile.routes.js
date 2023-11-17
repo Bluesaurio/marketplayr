@@ -214,7 +214,7 @@ router.get("/my-sales", isLoggedIn, async (req, res, next) => {
   }
 });
 
-// Ruta para subir imágenes de perfil
+// POST "/profile/upload-picture" => Ruta para subir imágenes de perfil
 router.post(
   "/upload-picture",
   uploader.single("profilePic"),

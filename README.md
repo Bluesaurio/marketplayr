@@ -167,6 +167,22 @@ HTML, CSS, Javascript, Node, Express, Handlebars, Sessions & Cookies, Rawg API, 
 
   - delete the product
 
+- GET /profile/my-sales
+
+  - renders the list of the products the user has sold, with the details of their buyers
+
+- GET /profile/my-orders
+
+  - renders the list of the orders from the products the user has bought
+
+- GET /profile/my-orders/:orderId/details
+
+  - renders the details of the order of the product selected
+
+- POST /profile/upload-picture
+
+  - changes the profile image from the user
+
 -**ADMIN ROUTES**
 
 - GET /admin
@@ -188,42 +204,136 @@ HTML, CSS, Javascript, Node, Express, Handlebars, Sessions & Cookies, Rawg API, 
 
 ## Models
 
-**NOTE -** List here all the models & Schemas of your Database Structure. Example:
+- **Order model**
 
-User model
+  buyer:
+  type: mongoose.Schema.Types.ObjectId,
+  ref: "User",
 
-```
-username: String
-password: String
-```
+  seller:
+  type: mongoose.Schema.Types.ObjectId,
+  ref: "User",
 
-Event model
+  product:
+  type: mongoose.Schema.Types.ObjectId,
+  ref: "Product",
 
-```
-owner: ObjectId<User>
-name: String
-description: String
-date: Date
-```
+  address:
+  type: String,
+
+  status:
+  type: String,
+  enum: ["En proceso", "En envío", "Recibido"],
+  default: "En proceso",
+
+  orderPrice: Number,
+  timestamps: true
+
+- **Product model**
+
+  title:
+  type: String,
+  trim: true,
+  required: true,
+
+  platform:
+  type: String,
+  trim: true,
+  required: true,
+  enum: [
+  "Nintendo Switch",
+  "Playstation 5",
+  "Playstation 4",
+  "Xbox Series X",
+  "Xbox One",
+  ],
+
+  edition:
+  type: String,
+  trim: true,
+  required: false,
+
+  releaseYear:
+  type: Number,
+  trim: true,
+  required: false,
+
+  developer:
+  type: String,
+  trim: true,
+  required: false,
+
+  publisher:
+  type: String,
+  trim: true,
+  required: false,
+
+  price:
+  type: Number,
+  required: true,
+
+  genre:
+  type: String,
+  trim: true,
+  required: false,
+
+  stock:
+  type: Number,
+  required: true,
+  default: 1,
+
+  onSale:
+  type: Boolean,
+  default: true,
+
+  productPic:
+  type: String,
+  required: true,
+
+  seller:
+  type: mongoose.Schema.Types.ObjectId,
+  ref: "User",
+
+  apiId:
+  type: Number,
+
+  timestamps: true
+
+- **User model**
+
+  username:
+  type: String,
+  trim: true,
+  required: false,
+  unique: true,
+
+  email:
+  type: String,
+  required: true,
+  unique: true,
+  lowercase: true,
+  trim: true,
+
+  password:
+  type: String,
+  required: true,
+
+  role:
+  type: String,
+  enum: ["user", "admin"],
+  default: "user",
+
+  profilePic: String,
+  timestamps: true
 
 ## Links
 
 ## Collaborators
 
-[Developer 1 name](www.github-url.com)
-
-[Developer 2 name](www.github-url.com)
+[Adrián Siquier Vallés](https://github.com/Bluesaurio)
 
 ### Project
 
-[Repository Link](www.your-github-url-here.com)
+[Marketplayr](https://github.com/raulgarrigos/marketplayr)
 
-[Deploy Link](www.your-deploy-url-here.com)
-
-### Trello
-
-[Link to your trello board](www.your-trello-url-here.com)
-
-### Slides
-
-[Slides Link](www.your-slides-url-here.com)
+[https://marketplayr.adaptable.app/](https://marketplayr.adaptable.app/)
