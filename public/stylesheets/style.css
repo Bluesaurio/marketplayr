@@ -276,6 +276,11 @@ h1 {
   cursor: pointer;
 }
 
+.RAWG {
+  margin-top: 35px;
+  font-size: 10px;
+}
+
 .button-details button:hover {
   background-color: #45a049;
 }
@@ -461,6 +466,12 @@ h1 {
 
 .create-product button:hover {
   background-color: #45a049;
+}
+
+.create-product p {
+  margin-top: 5px;
+  text-align: center;
+  font-size: 10px;
 }
 
 .admin-button {
