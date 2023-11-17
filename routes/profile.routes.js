@@ -94,16 +94,6 @@ router.post(
   }
 );
 
-// GET "/profile/:productId" => renderizar los detalles de los productos del usuario
-router.get("/:productId", isLoggedIn, async (req, res, next) => {
-  const dbProduct = await Product.findById(req.params.productId);
-  const response = await fetch(
-    `https://api.rawg.io/api/games/${dbProduct.apiId}?key=${process.env.API_KEY}`
-  );
-  const apiProduct = await response.json();
-  res.render("profile/product-details.hbs", { dbProduct, apiProduct });
-});
-
 // GET "/profile/:productId/edit" => Renderizar un formulario para editar la información del producto
 router.get("/:productId/edit", isLoggedIn, async (req, res, next) => {
   try {
@@ -229,5 +219,15 @@ router.post(
     }
   }
 );
+//! ésta ruta esta la última por no tener una continuación tras la URL dinámica
+// GET "/profile/:productId" => renderizar los detalles de los productos del usuario
+router.get("/:productId", isLoggedIn, async (req, res, next) => {
+  const dbProduct = await Product.findById(req.params.productId);
+  const response = await fetch(
+    `https://api.rawg.io/api/games/${dbProduct.apiId}?key=${process.env.API_KEY}`
+  );
+  const apiProduct = await response.json();
+  res.render("profile/product-details.hbs", { dbProduct, apiProduct });
+});
 
 module.exports = router;
