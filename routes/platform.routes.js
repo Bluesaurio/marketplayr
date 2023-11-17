@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Product = require("../models/Product.model.js");
 
+//GET "/platform/-una consola-" => renderiza la vista de la consola elegida en el desplegable de consolas
 router.get("/nintendo-switch", async (req, res, next) => {
   try {
     const platformGames = await Product.find({ platform: "Nintendo Switch" });

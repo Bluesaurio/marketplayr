@@ -4,7 +4,6 @@ const User = require("../models/User.model");
 const { isLoggedIn } = require("../middlewares/auth.middlewares");
 const Product = require("../models/Product.model");
 const fetch = require("node-fetch");
-
 const uploader = require("../middlewares/cloudinary.middleware");
 const Order = require("../models/Order.model");
 
@@ -27,60 +26,6 @@ router.get("/", isLoggedIn, async (req, res, next) => {
         userProfile,
       });
     }
-  } catch (error) {
-    next(error);
-  }
-});
-
-// POST "/profile/:productId/editProduct" para editar la info que se introduce en el formulario
-router.post(
-  "/:productId/editProduct",
-  uploader.single("productPic"),
-  async (req, res, next) => {
-    const {
-      title,
-      platform,
-      edition,
-      releaseYear,
-      developer,
-      publisher,
-      price,
-      genre,
-      stock,
-      onSale,
-    } = req.body;
-
-    try {
-      const updateFields = {
-        title,
-        platform,
-        edition,
-        releaseYear,
-        developer,
-        publisher,
-        price,
-        genre,
-        stock,
-        onSale,
-      };
-
-      if (req.file !== undefined) {
-        updateFields.productPic = req.file.path;
-      }
-
-      await Product.findByIdAndUpdate(req.params.productId, updateFields);
-      res.redirect(`/profile/${req.params.productId}`);
-    } catch (error) {
-      next(error);
-    }
-  }
-);
-
-// POST "/profile/:productId/delete" para borrar el producto seleccionado
-router.post("/:productId/delete", async (req, res, next) => {
-  try {
-    await Product.findByIdAndDelete(req.params.productId);
-    res.redirect("/profile");
   } catch (error) {
     next(error);
   }
@@ -149,21 +94,81 @@ router.post(
   }
 );
 
-// Ruta para subir imágenes de perfil
+// GET "/profile/:productId" => renderizar los detalles de los productos del usuario
+router.get("/:productId", isLoggedIn, async (req, res, next) => {
+  const dbProduct = await Product.findById(req.params.productId);
+  const response = await fetch(
+    `https://api.rawg.io/api/games/${dbProduct.apiId}?key=${process.env.API_KEY}`
+  );
+  const apiProduct = await response.json();
+  res.render("profile/product-details.hbs", { dbProduct, apiProduct });
+});
+
+// GET "/profile/:productId/edit" => Renderizar un formulario para editar la información del producto
+router.get("/:productId/edit", isLoggedIn, async (req, res, next) => {
+  try {
+    const productEdit = await Product.findById(req.params.productId);
+    res.render("profile/product-edit.hbs", {
+      productEdit,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// POST "/profile/:productId/editProduct" para editar la info que se introduce en el formulario
 router.post(
-  "/upload-picture",
-  uploader.single("profilePic"),
+  "/:productId/editProduct",
+  uploader.single("productPic"),
   async (req, res, next) => {
+    const {
+      title,
+      platform,
+      edition,
+      releaseYear,
+      developer,
+      publisher,
+      price,
+      genre,
+      stock,
+      onSale,
+    } = req.body;
+
     try {
-      await User.findByIdAndUpdate(req.session.user._id, {
-        profilePic: req.file.path,
-      });
-      res.redirect("/profile");
+      const updateFields = {
+        title,
+        platform,
+        edition,
+        releaseYear,
+        developer,
+        publisher,
+        price,
+        genre,
+        stock,
+        onSale,
+      };
+
+      if (req.file !== undefined) {
+        updateFields.productPic = req.file.path;
+      }
+
+      await Product.findByIdAndUpdate(req.params.productId, updateFields);
+      res.redirect(`/profile/${req.params.productId}`);
     } catch (error) {
       next(error);
     }
   }
 );
+
+// POST "/profile/:productId/delete" para borrar el producto seleccionado
+router.post("/:productId/delete", async (req, res, next) => {
+  try {
+    await Product.findByIdAndDelete(req.params.productId);
+    res.redirect("/profile");
+  } catch (error) {
+    next(error);
+  }
+});
 
 // GET "/profile/my-orders" => renderizar lista de pedidos realizados
 router.get("/my-orders", isLoggedIn, async (req, res, next) => {
@@ -209,26 +214,20 @@ router.get("/my-sales", isLoggedIn, async (req, res, next) => {
   }
 });
 
-// GET "/profile/:productId" => renderizar los detalles de los productos del usuario
-router.get("/:productId", isLoggedIn, async (req, res, next) => {
-  const dbProduct = await Product.findById(req.params.productId);
-  const response = await fetch(
-    `https://api.rawg.io/api/games/${dbProduct.apiId}?key=${process.env.API_KEY}`
-  );
-  const apiProduct = await response.json();
-  res.render("profile/product-details.hbs", { dbProduct, apiProduct });
-});
-
-// GET "/profile/:productId/edit" => Renderizar un formulario para editar la información del producto
-router.get("/:productId/edit", isLoggedIn, async (req, res, next) => {
-  try {
-    const productEdit = await Product.findById(req.params.productId);
-    res.render("profile/product-edit.hbs", {
-      productEdit,
-    });
-  } catch (error) {
-    next(error);
+// Ruta para subir imágenes de perfil
+router.post(
+  "/upload-picture",
+  uploader.single("profilePic"),
+  async (req, res, next) => {
+    try {
+      await User.findByIdAndUpdate(req.session.user._id, {
+        profilePic: req.file.path,
+      });
+      res.redirect("/profile");
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
 
 module.exports = router;
